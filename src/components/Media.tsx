@@ -84,6 +84,7 @@ export function SmartImage({
 
   return (
     <img
+      ref={imgRef}
       src={src}
       alt={alt}
       loading="lazy"
