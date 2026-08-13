@@ -57,16 +57,22 @@ export function SmartImage({
   className?: string;
   imgClassName?: string;
 }) {
-  const [failed, setFailed] = useState(false);
+  const [status, setStatus] = useState<"loading" | "ok" | "failed">("loading");
   const imgRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
-    const el = imgRef.current;
-    if (el && el.complete && el.naturalWidth === 0) setFailed(true);
+    let alive = true;
+    setStatus("loading");
+    const probe = new Image();
+    probe.onload = () => alive && setStatus("ok");
+    probe.onerror = () => alive && setStatus("failed");
+    probe.src = src;
+    return () => {
+      alive = false;
+    };
   }, [src]);
 
-
-  if (failed) {
+  if (status !== "ok") {
     return (
       <div
         className={`flex flex-col items-center justify-center gap-2 bg-[image:var(--gradient-card)] text-center ${className}`}
