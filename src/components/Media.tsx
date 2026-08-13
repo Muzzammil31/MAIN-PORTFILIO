@@ -190,7 +190,7 @@ export function Lightbox({
 
       <figure className="max-h-[86vh] w-full max-w-5xl" onClick={(e) => e.stopPropagation()}>
         <SmartImage
-          src={images[index]}
+          src={images[index] ?? ""}
           alt={caption ?? "Preview"}
           label="Upload this image"
           className="max-h-[76vh] w-full rounded-2xl border border-border object-contain"
