@@ -162,7 +162,7 @@ export function Certificates() {
         </div>
       )}
 
-      {zoom && <Lightbox images={[zoom]} index={0} caption={open?.title} onClose={() => setZoom(null)} onIndex={() => {}} />}
+      {zoom && <Lightbox images={[zoom]} index={0} caption={open?.title ?? ""} onClose={() => setZoom(null)} onIndex={() => {}} />}
     </section>
   );
 }
