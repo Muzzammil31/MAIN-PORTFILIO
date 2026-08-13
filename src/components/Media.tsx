@@ -94,7 +94,7 @@ export function SmartImage({
       src={src}
       alt={alt}
       loading="lazy"
-      onError={() => setFailed(true)}
+      onError={() => setStatus("failed")}
       className={`${className} ${imgClassName}`}
     />
   );
