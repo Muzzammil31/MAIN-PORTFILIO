@@ -58,6 +58,13 @@ export function SmartImage({
   imgClassName?: string;
 }) {
   const [failed, setFailed] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    const el = imgRef.current;
+    if (el && el.complete && el.naturalWidth === 0) setFailed(true);
+  }, [src]);
+
 
   if (failed) {
     return (
