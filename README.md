@@ -27,7 +27,7 @@ In **Settings → Pages → Build and deployment**, select **GitHub Actions** as
 
 ### GitHub Pages asset paths
 
-Vite uses a portable relative asset base (`./`), so CSS, JS, favicon and CV links work at both the repository URL and the configured custom domain (`portfolio.muzammilhussain.com`). The portfolio is a static single-page site; no backend is needed for project filtering, galleries or the email-draft contact link.
+Vite uses a portable relative asset base (`./`), so CSS, JS, favicon and CV links work correctly on the free GitHub Pages URL without a custom domain. The portfolio is a static single-page site; no backend is needed for project filtering, galleries or the email-draft contact link.
 
 ## Content
 
