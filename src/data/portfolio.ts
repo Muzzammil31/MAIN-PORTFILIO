@@ -43,7 +43,7 @@ export const profile = {
   assistant: "https://violet-jacynth-89.tiiny.site",
   avatar: "/images/profile.jpg",
   phone: "+923180523076",
-  website: "https://muzzammil31.github.io/creative-canvas/",
+  website: "https://muzzammil31.github.io/MAIN-PORTFILIO/",
   universityAssistant: "http://121.52.149.158:12380/",
 };
 
