@@ -552,3 +552,319 @@ h4 {
     transform: none !important;
   }
 }
+
+/* Portfolio visual system v3 — porcelain / cobalt / deep navy.
+   Intentional visual departure from the original full-dark neon theme. */
+:root {
+  color-scheme: light;
+  --radius: 1rem;
+  --background: #f7f9fd;
+  --foreground: #17263e;
+  --card: #ffffff;
+  --card-foreground: #17263e;
+  --popover: #ffffff;
+  --popover-foreground: #17263e;
+  --primary: #1755ba;
+  --primary-foreground: #ffffff;
+  --secondary: #e6edf8;
+  --secondary-foreground: #183b76;
+  --muted: #edf2f8;
+  --muted-foreground: #5c6b7e;
+  --accent: #6554bb;
+  --accent-foreground: #ffffff;
+  --destructive: #bf4056;
+  --destructive-foreground: #ffffff;
+  --border: rgb(32 59 100 / 13%);
+  --input: rgb(32 59 100 / 18%);
+  --ring: #1755ba;
+  --cyan: #176dc1;
+  --violet: #665ac5;
+  --amber: #ad772a;
+  --lime: #0f866e;
+  --surface: #ffffff;
+  --surface-2: #edf3fc;
+  --font-display: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --gradient-hero:
+    radial-gradient(ellipse at 20% 20%, rgb(80 124 191 / 9%), transparent 55%),
+    radial-gradient(ellipse at 95% 80%, rgb(122 113 201 / 10%), transparent 56%);
+  --gradient-line: linear-gradient(100deg, #1755ba, #5b58b9);
+  --gradient-card: linear-gradient(145deg, #ffffff, #f2f6fc);
+  --shadow-glow: 0 0 0 1px rgb(23 85 186 / 17%), 0 17px 42px -25px rgb(29 68 118 / 25%);
+  --shadow-violet: 0 18px 55px -33px rgb(86 78 164 / 20%);
+}
+html {
+  background: #f7f9fd;
+  scroll-padding-top: 6rem;
+}
+body {
+  background:
+    radial-gradient(circle at 3% 36%, rgb(81 122 206 / 5%), transparent 26%),
+    radial-gradient(circle at 98% 70%, rgb(107 102 190 / 5%), transparent 24%), #f7f9fd;
+  color: var(--foreground);
+}
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: -0.045em;
+}
+::selection {
+  background: rgb(90 124 220 / 22%);
+  color: #132b55;
+}
+::-webkit-scrollbar-track {
+  background: #f1f4fa;
+}
+::-webkit-scrollbar-thumb {
+  background: #b3c5db;
+}
+.panel {
+  background: #ffffff;
+  background-image: linear-gradient(153deg, #ffffff, #fdfdff 85%);
+  border: 1px solid rgb(39 68 114 / 12%);
+  box-shadow: 0 14px 42px -32px rgb(22 52 93 / 23%);
+  border-radius: 1.35rem;
+  backdrop-filter: none;
+}
+.panel:hover {
+  box-shadow: 0 22px 50px -36px rgb(34 71 123 / 31%);
+}
+.grid-bg {
+  background-image:
+    linear-gradient(rgb(64 105 169 / 5%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(64 105 169 / 5%) 1px, transparent 1px);
+  background-size: 66px 66px;
+}
+.gradient-text {
+  background: linear-gradient(110deg, #1457a9, #5754bd 90%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+#about,
+#experience,
+#projects,
+#skills,
+#certificates,
+#education,
+#achievements,
+#contact {
+  isolation: isolate;
+}
+#about .panel,
+#experience .panel,
+#projects .panel,
+#certificates .panel,
+#education .panel,
+#achievements .panel,
+#contact .panel,
+#skills .panel {
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+#about .panel:hover,
+#experience .panel:hover,
+#projects .panel:hover,
+#certificates .panel:hover,
+#education .panel:hover,
+#achievements .panel:hover,
+#skills .panel:hover {
+  border-color: rgb(28 90 185 / 24%);
+}
+#experience,
+#certificates,
+#achievements {
+  background: linear-gradient(180deg, rgb(228 236 248 / 42%), transparent 80%);
+}
+#projects,
+#education {
+  background: linear-gradient(180deg, transparent 1%, rgb(232 238 251 / 28%), transparent 95%);
+}
+#contact {
+  background: linear-gradient(180deg, rgb(234 240 252 / 72%), rgb(246 249 253 / 70%));
+}
+#contact input:focus,
+#contact textarea:focus,
+#skills button:focus-visible,
+#projects button:focus-visible {
+  outline: 2px solid rgb(28 92 189 / 32%);
+  outline-offset: 2px;
+}
+.hero-shell {
+  background: radial-gradient(circle at 70% 21%, #18345b, transparent 38%), #09182d;
+  border-bottom: none;
+  color: #f5f8ff;
+}
+.hero-shell .text-foreground {
+  color: #f7faff !important;
+}
+.hero-shell .text-muted-foreground {
+  color: #b6c6dc !important;
+}
+.hero-shell .text-primary {
+  color: #accffb !important;
+}
+.hero-shell .hero-heading {
+  color: #f9fbff;
+}
+.hero-shell .hero-heading-accent {
+  background: linear-gradient(118deg, #d0e7ff, #7bb1ff 60%, #c1c4ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.hero-ambient {
+  background:
+    radial-gradient(ellipse 38% 65% at 87% 31%, rgb(61 123 203 / 24%), transparent 85%),
+    radial-gradient(ellipse 42% 60% at 15% 92%, rgb(86 77 159 / 12%), transparent 78%);
+}
+.hero-shell .grid-bg {
+  background-image:
+    linear-gradient(rgb(160 199 245 / 5%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(160 199 245 / 5%) 1px, transparent 1px);
+}
+.hero-primary-cta {
+  background: #c2ddfc;
+  color: #0c2140;
+}
+.hero-primary-cta:hover {
+  background: #e6f3ff;
+}
+.hero-secondary-cta,
+.hero-icon-link {
+  background: rgb(255 255 255 / 5%);
+  color: #eff6ff;
+  border: 1px solid rgb(198 219 252 / 27%);
+}
+.hero-secondary-cta:hover,
+.hero-icon-link:hover {
+  background: rgb(195 217 255 / 12%);
+}
+.career-spotlight {
+  border-color: rgb(186 213 248 / 19%);
+  background: rgb(190 218 252 / 7%);
+  backdrop-filter: blur(5px);
+}
+.eyebrow-pill {
+  color: #b9f2df;
+  border: 1px solid rgb(148 222 189 / 32%);
+  background: rgb(79 168 137 / 11%);
+}
+.hero-visual-main {
+  border: 1px solid rgb(173 209 255 / 22%);
+  background:
+    radial-gradient(circle at 50% 45%, rgb(95 157 229 / 19%), transparent 38%),
+    linear-gradient(155deg, #142d50, #0e1f37 67%, #0b192f);
+}
+.hero-visual-main:after {
+  background-image: radial-gradient(circle, rgb(171 212 255 / 20%) 0.7px, transparent 1px);
+}
+.hero-orbit {
+  border-color: rgb(184 217 251 / 20%);
+}
+.hero-monogram {
+  background: linear-gradient(135deg, #e4f3ff, #93bce9);
+  color: #122943;
+}
+.hero-satellite {
+  background: #153559;
+  border-color: rgb(191 216 253 / 34%);
+  color: #d9ebff;
+}
+.hero-float-card {
+  background: #ffffff;
+  color: #17283e;
+  border: 1px solid #dbe5f1;
+  box-shadow: 0 17px 45px rgb(0 0 0 / 17%);
+}
+.hero-float-card .text-muted-foreground {
+  color: #657388 !important;
+}
+.hero-stat-card {
+  border: 1px solid rgb(175 211 255 / 17%);
+  background: rgb(194 215 250 / 6%);
+}
+.hero-stat-card:hover {
+  border-color: rgb(181 215 252 / 32%);
+  background: rgb(194 215 250 / 10%);
+}
+.hero-stat-card .text-foreground {
+  color: #ffffff !important;
+}
+.hero-stat-card .text-muted-foreground {
+  color: #b9c9dc !important;
+}
+.hero-tech-pill {
+  border: 1px solid rgb(189 214 249 / 21%);
+  background: rgb(155 203 255 / 8%);
+  color: #d6e9ff;
+}
+.project-artwork {
+  background: linear-gradient(145deg, #16345b 5%, #101f37 90%);
+}
+.project-artwork::before {
+  opacity: 0.42;
+  background-image:
+    linear-gradient(rgb(180 218 255 / 12%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(180 218 255 / 12%) 1px, transparent 1px);
+}
+.project-artwork-symbol {
+  color: #d8eaff;
+  border-color: rgb(170 209 255 / 31%);
+  background: rgb(134 186 255 / 10%);
+}
+.project-artwork-label {
+  color: #edf6ff;
+}
+#projects article.panel:hover {
+  transform: translateY(-5px);
+  border-color: rgb(59 105 186 / 27%);
+}
+#projects article.panel > button {
+  border-color: rgb(54 88 142 / 16%);
+}
+#experience .experience-featured {
+  background: linear-gradient(115deg, #0d2949, #173860 75%, #1c416f);
+  border: 1px solid rgb(81 139 210 / 42%);
+  box-shadow: 0 20px 55px -35px rgb(16 53 109 / 43%);
+}
+#experience .experience-featured .text-muted-foreground {
+  color: #c4d3e6 !important;
+}
+#experience .experience-featured .text-primary {
+  color: #b2d7ff !important;
+}
+#experience .experience-featured .text-foreground {
+  color: #f7faff !important;
+}
+#experience .experience-featured h3,
+#experience .experience-featured p:not(.text-muted-foreground) {
+  color: #f5f9ff;
+}
+#experience .experience-featured .bg-surface {
+  background: rgb(231 243 255 / 10%);
+  border-color: rgb(191 217 250 / 20%);
+}
+#experience .experience-featured .bg-surface .text-muted-foreground {
+  color: #c8d8ec !important;
+}
+#experience .experience-featured li .bg-accent {
+  background: #b7b0fc;
+}
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+:focus-visible {
+  outline: 2px solid #4181db;
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

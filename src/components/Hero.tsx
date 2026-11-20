@@ -74,7 +74,7 @@ export function Hero() {
                 <span className="status-dot" /> Available for opportunities
               </span>
               <span className="text-xs font-medium tracking-wide text-muted-foreground">
-                Based in Pakistan · Working globally
+                Red Fort · University of Haripur · Kaswa
               </span>
             </div>
           </Reveal>
@@ -102,6 +102,18 @@ export function Hero() {
             </p>
           </Reveal>
 
+          <Reveal delay={180}>
+            <div className="career-spotlight mt-6 flex flex-col gap-2 rounded-xl border px-4 py-3 sm:flex-row sm:items-center sm:gap-4">
+              <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">
+                2026 / Recent work
+              </span>
+              <span className="text-sm font-semibold text-foreground">AI Engineer at Red Fort</span>
+              <span className="hidden text-muted-foreground sm:inline">•</span>
+              <span className="text-xs text-muted-foreground">
+                AI automation · LLMs · Video systems
+              </span>
+            </div>
+          </Reveal>
           <Reveal delay={200}>
             <div className="mt-9 flex flex-wrap items-center gap-3">
               <a
@@ -154,7 +166,7 @@ export function Hero() {
                 <div className="flex items-center gap-2 font-mono text-[10px] font-semibold uppercase tracking-[0.23em] text-muted-foreground">
                   <span className="status-dot" /> AI / ENGINEERING
                 </div>
-                <span className="font-mono text-xs text-muted-foreground">EST. 2026</span>
+                <span className="font-mono text-xs text-muted-foreground">ENGINEER / 2026</span>
               </div>
               <div className="relative z-10 flex min-h-64 items-center justify-center py-8">
                 <div className="hero-orbit hero-orbit-outer" />

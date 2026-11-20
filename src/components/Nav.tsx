@@ -47,12 +47,14 @@ export function Nav() {
 
       <header
         className={`fixed inset-x-0 top-0 z-[60] transition-all duration-300 ${
-          scrolled ? "border-b border-border bg-background/80 backdrop-blur-xl" : "bg-transparent"
+          scrolled
+            ? "border-b border-border bg-background/95 shadow-lg backdrop-blur-xl"
+            : "border-b border-border bg-background/95 backdrop-blur-xl"
         }`}
       >
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3.5">
           <a href="#home" className="group flex items-center gap-3">
-            <span className="relative grid h-10 w-10 place-items-center rounded-xl bg-[image:var(--gradient-line)] font-display text-sm font-bold text-background">
+            <span className="relative grid h-10 w-10 place-items-center rounded-xl bg-primary font-display text-sm font-bold text-primary-foreground">
               MH
               <span className="absolute inset-0 rounded-xl bg-[image:var(--gradient-line)] opacity-40 blur-md transition-opacity group-hover:opacity-70" />
             </span>
@@ -61,7 +63,7 @@ export function Nav() {
                 MUZAMMIL.AI
               </span>
               <span className="block font-mono text-[10px] uppercase tracking-[0.28em] text-muted-foreground">
-                AI Engineering
+                AI Engineer · Portfolio
               </span>
             </span>
           </a>
@@ -87,10 +89,17 @@ export function Nav() {
 
           <div className="flex items-center gap-2">
             <a
+              href="/resume.pdf"
+              download="Muzammil_Hussain_CV.pdf"
+              className="hidden items-center gap-2 rounded-xl border border-border bg-surface px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-surface-2 sm:inline-flex"
+            >
+              Download CV
+            </a>
+            <a
               href="#contact"
               className="hidden items-center gap-2 rounded-full bg-[image:var(--gradient-line)] px-4 py-2 text-sm font-semibold text-background transition-transform hover:scale-[1.04] sm:inline-flex"
             >
-              <Sparkles className="h-4 w-4" /> Hire me
+              <Sparkles className="h-4 w-4" /> Contact me
             </a>
             <button
               onClick={() => setOpen((v) => !v)}
@@ -115,6 +124,14 @@ export function Nav() {
                   {l.label}
                 </a>
               ))}
+              <a
+                href="/resume.pdf"
+                download="Muzammil_Hussain_CV.pdf"
+                onClick={() => setOpen(false)}
+                className="col-span-2 rounded-xl border border-primary/20 bg-primary/10 px-3 py-2.5 text-center text-sm font-semibold text-primary"
+              >
+                Download updated CV
+              </a>
             </div>
           </div>
         )}

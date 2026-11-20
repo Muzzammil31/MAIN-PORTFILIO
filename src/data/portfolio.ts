@@ -49,7 +49,7 @@ export const profile = {
 
 export const stats = [
   { label: "Practical experience", value: 1, suffix: " year" },
-  { label: "AI projects & concepts", value: 18, suffix: "" },
+  { label: "AI projects & concepts", value: 19, suffix: "" },
   { label: "Internships", value: 6, suffix: "" },
   { label: "Documented certificates", value: 2, suffix: "" },
 ];
@@ -65,6 +65,37 @@ export const openRoles = [
 ];
 
 export const projects: Project[] = [
+  {
+    id: "redfort-studio",
+    code: "AI-00",
+    title: "RedFort Studio — AI Video Automation",
+    tagline: "Professional AI video creation workflows · Red Fort",
+    problem:
+      "Video-production teams need reliable orchestration of AI generation models, captions, and media workflows.",
+    architecture: [
+      "Web-based AI video production",
+      "LTX 2.5 and WAN 2.2 model/API connectivity",
+      "Caption, media-library and generation orchestration",
+    ],
+    features: [
+      "API/model connection status and diagnostics",
+      "Automatic transcription/captions from existing video audio",
+      "Video-generation cancellation and output organisation",
+      "AI video quality, rendering and workflow testing",
+    ],
+    contribution:
+      "Contributed to professional AI video automation, model integration, workflow implementation, debugging, and testing at Red Fort.",
+    stack: [
+      "AI automation",
+      "LTX 2.5",
+      "WAN 2.2",
+      "API integration",
+      "Video workflows",
+      "Captions",
+    ],
+    images: [],
+    accent: "violet",
+  },
   {
     id: "uoh-assistant",
     code: "AI-01",
@@ -504,8 +535,10 @@ export const experience = [
     role: "AI Engineer",
     org: "Red Fort Company · AI & Automation",
     period: "2026",
-    note: "Professional AI engineering experience",
+    note: "Applied AI engineering · Video workflows · LLM systems",
     points: [
+      "Contributed to RedFort Studio AI video automation workflows and video-generation model integration",
+      "Worked on API connectivity, LTX/WAN model diagnostics, captions, cancel controls and testing",
       "Developed an AI-powered interview assistant for real-time interview interaction",
       "Integrated OpenRouter APIs and AI models to process questions and generate relevant responses",
       "Implemented audio-based question listening and spoken AI-generated responses",
@@ -534,7 +567,7 @@ export const internships = [
     role: "AI Automation Intern",
     year: "Aug 2026 – Present",
     detail:
-      "Developing AI-powered automation workflows; contributing to AI software development, testing and system improvements under a Senior Developer.",
+      "AI automation internship supporting business workflows, software development, API/model integration, testing and continuous system improvement under senior-developer supervision.",
   },
   {
     org: "Technik Nest",

@@ -33,7 +33,7 @@ export function About() {
         <SectionHeader
           index="01"
           kicker="Engineer Profile"
-          title="ENGINEER PROFILE"
+          title="ABOUT ME"
           subtitle="A read-out of who I am, what I build and what I'm focused on right now."
         />
 
@@ -133,14 +133,19 @@ export function Experience() {
         <SectionHeader
           index="02"
           kicker="Timeline"
-          title="EXPERIENCE"
+          title="PROFESSIONAL EXPERIENCE"
           subtitle="Professional AI/software work and internship experience."
         />
 
         <div className="mt-12 space-y-6">
           {experience.map((e, i) => (
             <Reveal key={e.role} delay={i * 80}>
-              <div className="panel relative overflow-hidden p-6 transition-transform hover:-translate-y-1">
+              <div
+                className={[
+                  "panel relative overflow-hidden p-6 transition-transform hover:-translate-y-1",
+                  i === 0 ? "experience-featured" : "",
+                ].join(" ")}
+              >
                 <span className="absolute inset-y-0 left-0 w-1 bg-[image:var(--gradient-line)]" />
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <div>
@@ -210,7 +215,7 @@ export function Skills() {
         <SectionHeader
           index="04"
           kicker="Technology Ecosystem"
-          title="AI ENGINEERING STACK"
+          title="SKILLS & EXPERTISE"
           subtitle="Select a domain to inspect the technologies I actually build with."
         />
 
@@ -392,7 +397,7 @@ export function Contact() {
         <SectionHeader
           index="09"
           kicker="Contact Console"
-          title="LET'S BUILD SOMETHING INTELLIGENT"
+          title="LET'S WORK TOGETHER"
           subtitle="Open to AI Engineer / ML Engineer roles and freelance AI projects."
         />
 
@@ -499,7 +504,7 @@ export function Footer() {
           </p>
         </div>
         <p className="font-mono text-[10px] text-muted-foreground">
-          © {new Date().getFullYear()} · All systems operational
+          © {new Date().getFullYear()} · Built with care and curiosity
         </p>
       </div>
     </footer>

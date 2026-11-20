@@ -41,7 +41,7 @@ export function Projects() {
         <SectionHeader
           index="03"
           kicker="Systems"
-          title="SELECTED WORK & PROJECTS"
+          title="WORK & PROJECTS"
           subtitle="From deployed university systems and business software to AI research and experimental builds. Explore the architecture and my contribution."
         />
 
@@ -100,6 +100,11 @@ export function Projects() {
                 </button>
 
                 <div className="relative p-5">
+                  {["redfort-studio", "uoh-assistant", "kaswa-software"].includes(p.id) && (
+                    <span className="mb-2 inline-flex items-center rounded-full bg-primary/10 px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-wider text-primary">
+                      Featured work
+                    </span>
+                  )}
                   <h3 className="font-display text-xl font-semibold">{p.title}</h3>
                   <p className="mt-1.5 text-sm text-muted-foreground">{p.tagline}</p>
 

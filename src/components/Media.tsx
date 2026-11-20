@@ -1,5 +1,18 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { X, ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
+import {
+  X,
+  ChevronLeft,
+  ChevronRight,
+  Maximize2,
+  BrainCircuit,
+  Clapperboard,
+  ScanEye,
+  BookOpenText,
+  Bot,
+  ChartNoAxesCombined,
+  Microscope,
+  Code2,
+} from "lucide-react";
 
 /** Reveals children on scroll. */
 export function Reveal({
@@ -61,6 +74,10 @@ export function SmartImage({
 
   useEffect(() => {
     let alive = true;
+    if (!src) {
+      setStatus("failed");
+      return;
+    }
     setStatus("loading");
     const probe = new Image();
     probe.onload = () => alive && setStatus("ok");
@@ -71,6 +88,22 @@ export function SmartImage({
     };
   }, [src]);
 
+  const Icon = /video|studio/i.test(alt)
+    ? Clapperboard
+    : /university|uoh|assistant/i.test(alt)
+      ? BookOpenText
+      : /detect|vision|traffic|motion|pothole|helmet/i.test(alt)
+        ? ScanEye
+        : /sentiment|analytics|data|news/i.test(alt)
+          ? ChartNoAxesCombined
+          : /medical|fracture|insect/i.test(alt)
+            ? Microscope
+            : /agent|interview|robot/i.test(alt)
+              ? Bot
+              : /software|pipeline|classification/i.test(alt)
+                ? Code2
+                : BrainCircuit;
+
   if (status !== "ok") {
     return (
       <div
@@ -79,7 +112,7 @@ export function SmartImage({
         aria-label={alt}
       >
         <span className="project-artwork-symbol">
-          <Maximize2 className="h-8 w-8" />
+          <Icon className="h-8 w-8" />
         </span>
         <span className="project-artwork-label">{alt}</span>
       </div>
