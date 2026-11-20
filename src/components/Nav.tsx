@@ -69,35 +69,39 @@ export function Nav() {
           </a>
 
           <div className="hidden items-center gap-1 xl:flex">
-            {links.map((l) => (
-              <a
-                key={l.id}
-                href={`#${l.id}`}
-                className={`relative rounded-full px-3 py-1.5 text-sm transition-colors ${
-                  active === l.id
-                    ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                {active === l.id && (
-                  <span className="absolute inset-0 -z-10 rounded-full border border-border bg-[image:var(--gradient-card)]" />
-                )}
-                {l.label}
-              </a>
-            ))}
+            {links
+              .filter((l) =>
+                ["home", "about", "experience", "projects", "skills", "contact"].includes(l.id),
+              )
+              .map((l) => (
+                <a
+                  key={l.id}
+                  href={`#${l.id}`}
+                  className={`relative rounded-full px-3 py-1.5 text-sm transition-colors ${
+                    active === l.id
+                      ? "text-foreground"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {active === l.id && (
+                    <span className="absolute inset-0 -z-10 rounded-full border border-border bg-[image:var(--gradient-card)]" />
+                  )}
+                  {l.label}
+                </a>
+              ))}
           </div>
 
           <div className="flex items-center gap-2">
             <a
               href="/resume.pdf"
               download="Muzammil_Hussain_CV.pdf"
-              className="hidden items-center gap-2 rounded-xl border border-border bg-surface px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-surface-2 sm:inline-flex"
+              className="hidden items-center gap-2 rounded-xl border border-border bg-surface px-4 py-2 text-sm font-semibold text-foreground whitespace-nowrap transition-colors hover:bg-surface-2 sm:inline-flex"
             >
               Download CV
             </a>
             <a
               href="#contact"
-              className="hidden items-center gap-2 rounded-full bg-[image:var(--gradient-line)] px-4 py-2 text-sm font-semibold text-background transition-transform hover:scale-[1.04] sm:inline-flex"
+              className="hidden items-center gap-2 rounded-full bg-[image:var(--gradient-line)] px-4 py-2 text-sm font-semibold text-background whitespace-nowrap transition-transform hover:scale-[1.04] sm:inline-flex"
             >
               <Sparkles className="h-4 w-4" /> Contact me
             </a>

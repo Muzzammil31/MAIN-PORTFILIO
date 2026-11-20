@@ -868,3 +868,27 @@ button {
     transform: none !important;
   }
 }
+
+/* Small-screen refinements for phone-width layouts. */
+@media (max-width: 520px) {
+  .hero-heading {
+    font-size: clamp(3rem, 12.8vw, 3.85rem);
+    letter-spacing: -0.065em;
+    line-height: 1;
+  }
+  .hero-shell .career-spotlight {
+    padding: 0.9rem 1rem;
+  }
+  .hero-shell p {
+    overflow-wrap: break-word;
+  }
+  .hero-shell .hero-visual {
+    max-width: 100%;
+  }
+  .hero-visual-main {
+    padding: 1.15rem;
+  }
+  .hero-stat-card {
+    padding: 1rem;
+  }
+}

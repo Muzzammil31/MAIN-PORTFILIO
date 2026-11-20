@@ -34,7 +34,7 @@ export function About() {
           index="01"
           kicker="Engineer Profile"
           title="ABOUT ME"
-          subtitle="A read-out of who I am, what I build and what I'm focused on right now."
+          subtitle="Who I am, what I build, and how I turn AI ideas into working systems."
         />
 
         <div className="mt-12 grid gap-6 lg:grid-cols-[1.3fr_0.7fr]">
@@ -43,7 +43,7 @@ export function About() {
               <div className="flex items-center gap-2 text-primary">
                 <CheckCircle2 className="h-4 w-4" />
                 <span className="font-mono text-[10px] uppercase tracking-[0.24em]">
-                  Verified profile
+                  Professional summary
                 </span>
               </div>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
