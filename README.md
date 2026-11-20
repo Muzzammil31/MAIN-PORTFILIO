@@ -4,7 +4,7 @@ Professional React + TypeScript + Tailwind CSS portfolio, hosted independently o
 
 ## Live site (after GitHub Pages is enabled)
 
-https://muzzammil31.github.io/creative-canvas/
+https://muzzammil31.github.io/MAIN-PORTFILIO/
 
 ## Development
 
@@ -21,13 +21,13 @@ npm run build
 
 Every push to `main` triggers `.github/workflows/deploy-pages.yml`. The workflow builds the static site and publishes the `dist/` directory using GitHub's official Pages actions.
 
-In **Settings → Pages → Build and deployment**, select **GitHub Actions** as the deployment source. Under GitHub Free, Pages requires a **public repository**; a **private repository** needs an eligible paid GitHub plan. This repository may still be private, so publishing may remain disabled until the repo owner selects the appropriate setting/plan.
+In **Settings → Pages → Build and deployment**, select **GitHub Actions** as the deployment source. This first-time setup is required before the workflow can deploy; otherwise `actions/configure-pages` fails with `Get Pages site failed`. Under GitHub Free, Pages requires a **public repository**; a **private repository** needs an eligible paid GitHub plan. This repository may still be private, so publishing may remain disabled until the repo owner selects the appropriate setting/plan.
 
 **Privacy:** The PDF in `public/resume.pdf` is the original CV and contains a detailed residential address. Do not switch this repository to public without first replacing that PDF and considering copies in Git history. If needed, publish a separate public repository with a privacy-safe CV instead.
 
 ### GitHub Pages asset paths
 
-Vite sets the production base path to `/creative-canvas/`, ensuring CSS, JS, favicon and CV links resolve under the repository's GitHub Pages URL. The portfolio is a static single-page site; no backend is needed for project filtering, galleries or the email-draft contact link.
+Vite uses a portable relative asset base (`./`), so CSS, JS, favicon and CV links work at both the repository URL and the configured custom domain (`portfolio.muzammilhussain.com`). The portfolio is a static single-page site; no backend is needed for project filtering, galleries or the email-draft contact link.
 
 ## Content
 
