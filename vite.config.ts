@@ -5,6 +5,6 @@ import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
   plugins: [react(), tailwindcss(), tsconfigPaths()],
-  base: process.env["NODE_ENV"] === "production" ? "/creative-canvas/" : "/",
+  base: "./",
   build: { outDir: "dist", emptyOutDir: true },
 });
