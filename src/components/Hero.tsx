@@ -124,7 +124,7 @@ export function Hero() {
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
               <a
-                href="/resume.pdf"
+                href="resume.pdf"
                 download="Muzammil_Hussain_CV.pdf"
                 className="hero-secondary-cta inline-flex items-center gap-2 rounded-xl px-5 py-3.5 text-sm font-semibold transition-colors hover:bg-surface-2"
               >

@@ -98,7 +98,9 @@ export function Certificates() {
           ))}
         </div>
         {list.length === 0 && (
-          <p className="mt-10 text-center font-mono text-xs uppercase tracking-widest text-muted-foreground">No certificates match</p>
+          <p className="mt-10 text-center font-mono text-xs uppercase tracking-widest text-muted-foreground">
+            No certificates match
+          </p>
         )}
       </div>
 
@@ -107,7 +109,10 @@ export function Certificates() {
           className="fixed inset-0 z-[75] flex items-start justify-center overflow-y-auto bg-background/90 p-4 py-10 backdrop-blur-xl"
           onClick={() => setOpen(null)}
         >
-          <div className="panel relative w-full max-w-2xl animate-rise p-0" onClick={(e) => e.stopPropagation()}>
+          <div
+            className="panel relative w-full max-w-2xl animate-rise p-0"
+            onClick={(e) => e.stopPropagation()}
+          >
             <button
               onClick={() => setOpen(null)}
               className="absolute right-4 top-4 z-10 grid h-10 w-10 place-items-center rounded-full border border-border bg-background/80 backdrop-blur transition-colors hover:bg-surface-2"
@@ -142,16 +147,33 @@ export function Certificates() {
               <p className="mt-2 text-sm text-muted-foreground">{open.description}</p>
 
               <div className="mt-5 grid gap-3 sm:grid-cols-3">
-                <Meta icon={<Building2 className="h-3.5 w-3.5" />} label="Issuer" value={open.issuer} />
-                <Meta icon={<Calendar className="h-3.5 w-3.5" />} label="Issued" value={open.date} />
-                <Meta icon={<Hash className="h-3.5 w-3.5" />} label="Credential ID" value={open.credentialId} />
+                <Meta
+                  icon={<Building2 className="h-3.5 w-3.5" />}
+                  label="Issuer"
+                  value={open.issuer}
+                />
+                <Meta
+                  icon={<Calendar className="h-3.5 w-3.5" />}
+                  label="Issued"
+                  value={open.date}
+                />
+                <Meta
+                  icon={<Hash className="h-3.5 w-3.5" />}
+                  label="Credential ID"
+                  value={open.credentialId}
+                />
               </div>
 
               <div className="mt-5">
-                <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.24em] text-muted-foreground">Skills covered</p>
+                <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.24em] text-muted-foreground">
+                  Skills covered
+                </p>
                 <div className="flex flex-wrap gap-2">
                   {open.skills.map((s) => (
-                    <span key={s} className="rounded-full border border-border bg-surface px-3 py-1 text-xs text-muted-foreground">
+                    <span
+                      key={s}
+                      className="rounded-full border border-border bg-surface px-3 py-1 text-xs text-muted-foreground"
+                    >
                       {s}
                     </span>
                   ))}
@@ -162,7 +184,15 @@ export function Certificates() {
         </div>
       )}
 
-      {zoom && <Lightbox images={[zoom]} index={0} caption={open?.title ?? ""} onClose={() => setZoom(null)} onIndex={() => {}} />}
+      {zoom && (
+        <Lightbox
+          images={[zoom]}
+          index={0}
+          caption={open?.title ?? ""}
+          onClose={() => setZoom(null)}
+          onIndex={() => {}}
+        />
+      )}
     </section>
   );
 }

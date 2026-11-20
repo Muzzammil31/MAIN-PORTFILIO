@@ -1,26 +1,34 @@
-# Creative Canvas
+# Muzammil Hussain — AI Engineer Portfolio
 
-https://muzammil-ai-os.lovable.app/    note : 
+Professional React + TypeScript + Tailwind CSS portfolio, hosted independently on **GitHub Pages**. This site does not require a proprietary builder or a running application server.
 
-It is very well made, just a little more inside the GUI and a little more gradient and colors, make it a little more attractive so that things are a little more attractive and add other options that you like or that are good for, which is very important for today and such a rough example certificate, what data does it have, when you open the certificate, there is also a picture of the certificate at the top, I will enter it, you have to put the name certificate.jpg like this, okay, I will enter it, like this, add some more things that you like, add some animations and the pictures that I have given, adjust them somehow so that they are also small shows that they are clickable when opened and the projects that are opened should also have one or two images inside them, I will add those images too, like this, some other things seem to be better, some things will be better Add those options too.What I have given you is what you have to do on this website and at last I have to create a single file with all the updated code files and give them a download option.
+## Live site (after GitHub Pages is enabled)
 
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/ea2a6819-54b7-4050-89c8-3ec526f13ec6).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+https://muzzammil31.github.io/creative-canvas/
 
 ## Development
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+Requirements: Node.js 22.12+ or 24+, npm.
 
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+```bash
+npm ci
 npm run dev
+npm run typecheck
+npm run build
 ```
+
+## GitHub Pages
+
+Every push to `main` triggers `.github/workflows/deploy-pages.yml`. The workflow builds the static site and publishes the `dist/` directory using GitHub's official Pages actions.
+
+In **Settings → Pages → Build and deployment**, select **GitHub Actions** as the deployment source. Under GitHub Free, Pages requires a **public repository**; a **private repository** needs an eligible paid GitHub plan. This repository may still be private, so publishing may remain disabled until the repo owner selects the appropriate setting/plan.
+
+**Privacy:** The PDF in `public/resume.pdf` is the original CV and contains a detailed residential address. Do not switch this repository to public without first replacing that PDF and considering copies in Git history. If needed, publish a separate public repository with a privacy-safe CV instead.
+
+### GitHub Pages asset paths
+
+Vite sets the production base path to `/creative-canvas/`, ensuring CSS, JS, favicon and CV links resolve under the repository's GitHub Pages URL. The portfolio is a static single-page site; no backend is needed for project filtering, galleries or the email-draft contact link.
+
+## Content
+
+Edit `src/data/portfolio.ts` to update work history, skills, certificates and project entries. The portfolio preserves the Red Fort/RFT 360 experience, UOH Assistant, Kaswa software, and the remaining CV projects.

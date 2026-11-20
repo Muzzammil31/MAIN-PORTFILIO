@@ -25,7 +25,8 @@ export function Reveal({
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
+  // Keep core content visible even when scroll observers are delayed or unavailable.
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     const el = ref.current;
@@ -69,6 +70,7 @@ export function SmartImage({
   className?: string;
   imgClassName?: string;
 }) {
+  const resolvedSrc = src.startsWith("/") ? import.meta.env.BASE_URL + src.slice(1) : src;
   const [status, setStatus] = useState<"loading" | "ok" | "failed">("loading");
   const imgRef = useRef<HTMLImageElement>(null);
 
@@ -82,11 +84,11 @@ export function SmartImage({
     const probe = new Image();
     probe.onload = () => alive && setStatus("ok");
     probe.onerror = () => alive && setStatus("failed");
-    probe.src = src;
+    probe.src = resolvedSrc;
     return () => {
       alive = false;
     };
-  }, [src]);
+  }, [resolvedSrc, src]);
 
   const Icon = /video|studio/i.test(alt)
     ? Clapperboard
@@ -122,7 +124,7 @@ export function SmartImage({
   return (
     <img
       ref={imgRef}
-      src={src}
+      src={resolvedSrc}
       alt={alt}
       loading="lazy"
       onError={() => setStatus("failed")}
