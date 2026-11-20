@@ -42,18 +42,28 @@ export function About() {
             <div className="panel h-full p-6 sm:p-8">
               <div className="flex items-center gap-2 text-primary">
                 <CheckCircle2 className="h-4 w-4" />
-                <span className="font-mono text-[10px] uppercase tracking-[0.24em]">Verified profile</span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.24em]">
+                  Verified profile
+                </span>
               </div>
-              <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">{profile.summary}</p>
-              <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">{profile.summary2}</p>
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                {profile.summary}
+              </p>
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                {profile.summary2}
+              </p>
 
               <div className="mt-6 rounded-xl border border-border bg-surface/60 p-4">
-                <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-muted-foreground">Current focus</p>
+                <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-muted-foreground">
+                  Current focus
+                </p>
                 <p className="mt-1.5 text-sm">{profile.focus}</p>
               </div>
 
               <div className="mt-6">
-                <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.24em] text-muted-foreground">Open to roles</p>
+                <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.24em] text-muted-foreground">
+                  Open to roles
+                </p>
                 <div className="flex flex-wrap gap-2">
                   {openRoles.map((r) => (
                     <span
@@ -70,7 +80,9 @@ export function About() {
 
           <Reveal delay={100}>
             <div className="panel h-full space-y-3 p-6">
-              <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-muted-foreground">Identity</p>
+              <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-muted-foreground">
+                Identity
+              </p>
               {[
                 ["Name", profile.name],
                 ["Role", "AI Engineer"],
@@ -78,8 +90,13 @@ export function About() {
                 ["University", profile.university],
                 ["Location", profile.location],
               ].map(([k, v]) => (
-                <div key={k} className="flex items-start justify-between gap-4 border-b border-border pb-2 last:border-0">
-                  <span className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">{k}</span>
+                <div
+                  key={k}
+                  className="flex items-start justify-between gap-4 border-b border-border pb-2 last:border-0"
+                >
+                  <span className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+                    {k}
+                  </span>
                   <span className="text-right text-sm">{v}</span>
                 </div>
               ))}
@@ -89,7 +106,16 @@ export function About() {
                 rel="noreferrer"
                 className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-[image:var(--gradient-card)] px-4 py-3 text-sm font-semibold transition-transform hover:-translate-y-0.5"
               >
-                <Sparkles className="h-4 w-4 text-primary" /> Try my AI assistant <ExternalLink className="h-3.5 w-3.5" />
+                <Sparkles className="h-4 w-4 text-primary" /> Try my AI assistant{" "}
+                <ExternalLink className="h-3.5 w-3.5" />
+              </a>
+              <a
+                href={profile.universityAssistant}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-surface px-4 py-3 text-sm font-semibold text-muted-foreground transition-colors hover:border-primary hover:text-foreground"
+              >
+                <ExternalLink className="h-4 w-4 text-primary" /> UOH AI Assistant — deployed demo
               </a>
             </div>
           </Reveal>
@@ -104,7 +130,12 @@ export function Experience() {
     <section id="experience" className="relative py-24">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(50%_40%_at_10%_30%,color-mix(in_oklab,var(--cyan)_14%,transparent),transparent)]" />
       <div className="relative mx-auto max-w-7xl px-5">
-        <SectionHeader index="02" kicker="Timeline" title="EXPERIENCE" subtitle="Professional AI/software work and internship experience." />
+        <SectionHeader
+          index="02"
+          kicker="Timeline"
+          title="EXPERIENCE"
+          subtitle="Professional AI/software work and internship experience."
+        />
 
         <div className="mt-12 space-y-6">
           {experience.map((e, i) => (
@@ -133,7 +164,10 @@ export function Experience() {
                 </ul>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {e.stack.map((s) => (
-                    <span key={s} className="rounded-full border border-border bg-surface px-2.5 py-1 font-mono text-[10px] text-muted-foreground">
+                    <span
+                      key={s}
+                      className="rounded-full border border-border bg-surface px-2.5 py-1 font-mono text-[10px] text-muted-foreground"
+                    >
                       {s}
                     </span>
                   ))}
@@ -144,7 +178,9 @@ export function Experience() {
         </div>
 
         <Reveal>
-          <h3 className="mt-14 font-display text-lg font-semibold uppercase tracking-[0.18em] text-muted-foreground">Internship experience</h3>
+          <h3 className="mt-14 font-display text-lg font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+            Internship experience
+          </h3>
         </Reveal>
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {internships.map((it, i) => (
@@ -199,7 +235,9 @@ export function Skills() {
 
           <Reveal delay={80}>
             <div className="panel p-6">
-              <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-primary">{domain.name}</p>
+              <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-primary">
+                {domain.name}
+              </p>
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
                 {domain.items.map((s, i) => (
                   <div
@@ -207,7 +245,9 @@ export function Skills() {
                     className="group flex items-center gap-3 rounded-xl border border-border bg-surface/60 px-3 py-2.5 transition-all hover:-translate-y-0.5 hover:glow-ring"
                     style={{ animation: `rise 0.5s ${i * 45}ms cubic-bezier(0.22,1,0.36,1) both` }}
                   >
-                    <span className="font-mono text-[10px] text-muted-foreground">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="font-mono text-[10px] text-muted-foreground">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
                     <span className="text-sm">{s}</span>
                     <span className="ml-auto h-1.5 w-1.5 rounded-full bg-primary opacity-0 transition-opacity group-hover:opacity-100" />
                   </div>
@@ -237,7 +277,9 @@ export function Education() {
                   <h3 className="flex items-center gap-2 font-display text-lg font-semibold">
                     <GraduationCap className="h-4 w-4 text-primary" /> {e.degree}
                   </h3>
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">{e.period}</span>
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+                    {e.period}
+                  </span>
                 </div>
                 <p className="mt-1 text-sm text-accent">{e.org}</p>
                 <p className="mt-2 text-sm text-muted-foreground">{e.detail}</p>
@@ -265,7 +307,10 @@ export function Achievements() {
               </h3>
               <div className="mt-4 space-y-3">
                 {achievements.awards.map((a) => (
-                  <div key={a.title} className="rounded-xl border border-border bg-surface/60 p-4 transition-transform hover:translate-x-1">
+                  <div
+                    key={a.title}
+                    className="rounded-xl border border-border bg-surface/60 p-4 transition-transform hover:translate-x-1"
+                  >
                     <p className="text-sm font-semibold">{a.title}</p>
                     <p className="mt-1 text-xs text-muted-foreground">{a.detail}</p>
                   </div>
@@ -286,7 +331,10 @@ export function Achievements() {
                     <p className="mt-1.5 text-xs text-muted-foreground">{r.detail}</p>
                     <div className="mt-3 flex flex-wrap gap-1.5">
                       {r.tags.map((t) => (
-                        <span key={t} className="rounded-full border border-border bg-surface px-2.5 py-0.5 font-mono text-[10px] text-muted-foreground">
+                        <span
+                          key={t}
+                          className="rounded-full border border-border bg-surface px-2.5 py-0.5 font-mono text-[10px] text-muted-foreground"
+                        >
                           {t}
                         </span>
                       ))}
@@ -303,14 +351,38 @@ export function Achievements() {
 }
 
 export function Contact() {
-  const [sent, setSent] = useState(false);
-
   const channels = [
-    { icon: <Mail className="h-4 w-4" />, label: "Email", value: profile.email, href: `mailto:${profile.email}` },
-    { icon: <Linkedin className="h-4 w-4" />, label: "LinkedIn", value: "muzzammil-hussain", href: profile.linkedin },
-    { icon: <Github className="h-4 w-4" />, label: "GitHub", value: "Muzzammil31", href: profile.github },
-    { icon: <Sparkles className="h-4 w-4" />, label: "Fiverr", value: "muzamil_47", href: profile.fiverr },
+    {
+      icon: <Mail className="h-4 w-4" />,
+      label: "Email",
+      value: profile.email,
+      href: `mailto:${profile.email}`,
+    },
+    {
+      icon: <Linkedin className="h-4 w-4" />,
+      label: "LinkedIn",
+      value: "muzzammil-hussain",
+      href: profile.linkedin,
+    },
+    {
+      icon: <Github className="h-4 w-4" />,
+      label: "GitHub",
+      value: "Muzzammil31",
+      href: profile.github,
+    },
+    {
+      icon: <Sparkles className="h-4 w-4" />,
+      label: "Fiverr",
+      value: "muzamil_47",
+      href: profile.fiverr,
+    },
     { icon: <MapPin className="h-4 w-4" />, label: "Location", value: profile.location, href: "" },
+    {
+      icon: <Mail className="h-4 w-4" />,
+      label: "Phone / WhatsApp",
+      value: profile.phone,
+      href: `https://wa.me/${profile.phone.replace(/\D/g, "")}`,
+    },
   ];
 
   return (
@@ -327,7 +399,9 @@ export function Contact() {
         <div className="mt-12 grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
           <Reveal>
             <div className="panel h-full space-y-3 p-6">
-              <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-lime">● Channels open</p>
+              <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-lime">
+                ● Channels open
+              </p>
               {channels.map((c) => (
                 <a
                   key={c.label}
@@ -336,9 +410,13 @@ export function Contact() {
                   rel="noreferrer"
                   className="flex items-center gap-3 rounded-xl border border-border bg-surface/60 p-3 transition-all hover:-translate-y-0.5 hover:glow-ring"
                 >
-                  <span className="grid h-9 w-9 place-items-center rounded-lg bg-[image:var(--gradient-card)] text-primary">{c.icon}</span>
+                  <span className="grid h-9 w-9 place-items-center rounded-lg bg-[image:var(--gradient-card)] text-primary">
+                    {c.icon}
+                  </span>
                   <span>
-                    <span className="block font-mono text-[10px] uppercase tracking-widest text-muted-foreground">{c.label}</span>
+                    <span className="block font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+                      {c.label}
+                    </span>
                     <span className="block text-sm">{c.value}</span>
                   </span>
                 </a>
@@ -351,8 +429,16 @@ export function Contact() {
               className="panel h-full space-y-4 p-6"
               onSubmit={(e) => {
                 e.preventDefault();
-                setSent(true);
-                toast.success("Message ready to send", { description: "Form is validation-ready — connect a backend to deliver it." });
+                const form = new FormData(e.currentTarget);
+                const name = String(form.get("name") ?? "").trim();
+                const email = String(form.get("email") ?? "").trim();
+                const subject = String(form.get("subject") ?? "").trim();
+                const message = String(form.get("message") ?? "").trim();
+                const body = `From: ${name} (${email})\n\n${message}`;
+                window.location.href = `mailto:${profile.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                toast.info("Email draft opened", {
+                  description: "Complete sending in your email application.",
+                });
               }}
             >
               <div className="grid gap-4 sm:grid-cols-2">
@@ -361,9 +447,12 @@ export function Contact() {
               </div>
               <Field label="Subject" name="subject" />
               <div>
-                <label className="mb-1.5 block font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">Message</label>
+                <label className="mb-1.5 block font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
+                  Message
+                </label>
                 <textarea
                   required
+                  name="message"
                   rows={5}
                   className="w-full rounded-xl border border-border bg-surface px-3 py-2.5 text-sm outline-none transition-shadow focus:glow-ring"
                 />
@@ -372,7 +461,7 @@ export function Contact() {
                 type="submit"
                 className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[image:var(--gradient-line)] px-6 py-3 text-sm font-semibold text-background transition-transform hover:scale-[1.02]"
               >
-                {sent ? "Message queued" : "Transmit message"}
+                Open email draft
                 <Send className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </button>
             </form>
@@ -386,7 +475,9 @@ export function Contact() {
 function Field({ label, name, type = "text" }: { label: string; name: string; type?: string }) {
   return (
     <div>
-      <label className="mb-1.5 block font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">{label}</label>
+      <label className="mb-1.5 block font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
+        {label}
+      </label>
       <input
         required
         name={name}
@@ -404,10 +495,12 @@ export function Footer() {
         <div>
           <p className="font-display text-sm font-semibold">{profile.name}</p>
           <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-muted-foreground">
-            AI Engineer · Built with React, TypeScript & a local retrieval engine
+            AI Engineer · LLMs · Machine Learning · Computer Vision
           </p>
         </div>
-        <p className="font-mono text-[10px] text-muted-foreground">© {new Date().getFullYear()} · All systems operational</p>
+        <p className="font-mono text-[10px] text-muted-foreground">
+          © {new Date().getFullYear()} · All systems operational
+        </p>
       </div>
     </footer>
   );

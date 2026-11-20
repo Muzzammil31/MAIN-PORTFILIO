@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowUpRight, X, Layers, Target, Sparkles, User } from "lucide-react";
+import { ArrowUpRight, X, Layers, Target, Sparkles, User, Search } from "lucide-react";
 import { projects, type Project } from "@/data/portfolio";
 import { Reveal, SmartImage, Thumb, Lightbox } from "@/components/Media";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -13,6 +13,24 @@ const accentClass: Record<Project["accent"], string> = {
 
 export function Projects() {
   const [openId, setOpenId] = useState<string | null>(null);
+  const [query, setQuery] = useState("");
+  const [filter, setFilter] = useState("All");
+  const categories = ["All", "LLMs / NLP", "Computer Vision", "Automation", "Data / Apps"];
+  const visibleProjects = projects.filter((p) => {
+    const haystack = [p.title, p.tagline, ...p.stack].join(" ").toLowerCase();
+    if (!haystack.includes(query.trim().toLowerCase())) return false;
+    if (filter === "LLMs / NLP")
+      return /llm|rag|nlp|language|agent|convers|summar|translation|sentiment/i.test(haystack);
+    if (filter === "Computer Vision")
+      return /vision|video|image|yolo|ocr|detect|pothole|fracture|insect|medical|pytorch/i.test(
+        haystack,
+      );
+    if (filter === "Automation")
+      return /automat|software|robot|agent|scrap|interview|job/i.test(haystack);
+    if (filter === "Data / Apps")
+      return /data|dashboard|app|web|software|news|training/i.test(haystack);
+    return true;
+  });
   const [box, setBox] = useState<{ images: string[]; index: number; caption: string } | null>(null);
   const active = projects.find((p) => p.id === openId) ?? null;
 
@@ -23,20 +41,51 @@ export function Projects() {
         <SectionHeader
           index="03"
           kicker="Systems"
-          title="AI PROJECT LAB"
-          subtitle="Each card is a working system. Open one to inspect the problem, architecture, features, screenshots and my exact contribution."
+          title="SELECTED WORK & PROJECTS"
+          subtitle="From deployed university systems and business software to AI research and experimental builds. Explore the architecture and my contribution."
         />
 
-        <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {projects.map((p, i) => (
+        <div className="mt-10 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex flex-wrap gap-2" role="group" aria-label="Filter projects">
+            {categories.map((category) => (
+              <button
+                key={category}
+                type="button"
+                aria-pressed={filter === category}
+                onClick={() => setFilter(category)}
+                className={`rounded-full border px-3.5 py-2 text-xs font-semibold transition-colors ${filter === category ? "border-primary bg-primary text-primary-foreground" : "border-border bg-surface text-muted-foreground hover:text-foreground"}`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+          <label className="flex w-full items-center gap-2 rounded-xl border border-border bg-surface px-3.5 py-2.5 text-muted-foreground lg:w-60">
+            <Search className="h-4 w-4" />
+            <input
+              type="search"
+              placeholder="Search projects"
+              aria-label="Search projects"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              className="w-full bg-transparent text-sm text-foreground outline-none placeholder:text-muted-foreground"
+            />
+          </label>
+        </div>
+        <p className="mt-5 text-xs font-medium text-muted-foreground">
+          Showing {visibleProjects.length} of {projects.length} projects
+        </p>
+        <div className="mt-5 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {visibleProjects.map((p, i) => (
             <Reveal key={p.id} delay={i * 60}>
               <article className="group panel relative h-full overflow-hidden p-0 transition-all duration-300 hover:-translate-y-2 hover:glow-ring">
-                <div className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${accentClass[p.accent]} to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100`} />
+                <div
+                  className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${accentClass[p.accent]} to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100`}
+                />
                 <button
                   type="button"
-                  onClick={() => setBox({ images: p.images, index: 0, caption: p.title })}
+                  onClick={() => setOpenId(p.id)}
                   className="relative block aspect-video w-full overflow-hidden border-b border-border"
-                  aria-label={`Preview ${p.title}`}
+                  aria-label={`Explore ${p.title}`}
                 >
                   <SmartImage
                     src={p.images[0] ?? ""}
@@ -56,7 +105,10 @@ export function Projects() {
 
                   <div className="mt-4 flex flex-wrap gap-1.5">
                     {p.stack.slice(0, 4).map((s) => (
-                      <span key={s} className="rounded-full border border-border bg-surface px-2.5 py-1 font-mono text-[10px] text-muted-foreground">
+                      <span
+                        key={s}
+                        className="rounded-full border border-border bg-surface px-2.5 py-1 font-mono text-[10px] text-muted-foreground"
+                      >
                         {s}
                       </span>
                     ))}
@@ -85,7 +137,10 @@ export function Projects() {
           className="fixed inset-0 z-[75] flex items-start justify-center overflow-y-auto bg-background/90 p-4 py-10 backdrop-blur-xl"
           onClick={() => setOpenId(null)}
         >
-          <div className="panel relative w-full max-w-4xl animate-rise p-0" onClick={(e) => e.stopPropagation()}>
+          <div
+            className="panel relative w-full max-w-4xl animate-rise p-0"
+            onClick={(e) => e.stopPropagation()}
+          >
             <button
               onClick={() => setOpenId(null)}
               className="absolute right-4 top-4 z-10 grid h-10 w-10 place-items-center rounded-full border border-border bg-background/80 backdrop-blur transition-colors hover:bg-surface-2"
@@ -104,7 +159,9 @@ export function Projects() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
               <div className="absolute bottom-4 left-5">
-                <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-primary">{active.code}</span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-primary">
+                  {active.code}
+                </span>
                 <h3 className="font-display text-2xl font-bold sm:text-3xl">{active.title}</h3>
                 <p className="text-sm text-muted-foreground">{active.tagline}</p>
               </div>
@@ -139,24 +196,33 @@ export function Projects() {
               </Block>
 
               <div className="md:col-span-2">
-                <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.24em] text-muted-foreground">Gallery — click to enlarge</p>
+                <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.24em] text-muted-foreground">
+                  Gallery — click to enlarge
+                </p>
                 <div className="grid gap-3 sm:grid-cols-2">
                   {active.images.map((img, i) => (
                     <Thumb
                       key={img}
                       src={img}
                       alt={`${active.title} screenshot ${i + 1}`}
-                      onOpen={() => setBox({ images: active.images, index: i, caption: active.title })}
+                      onOpen={() =>
+                        setBox({ images: active.images, index: i, caption: active.title })
+                      }
                     />
                   ))}
                 </div>
               </div>
 
               <div className="md:col-span-2">
-                <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.24em] text-muted-foreground">Tech stack</p>
+                <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.24em] text-muted-foreground">
+                  Tech stack
+                </p>
                 <div className="flex flex-wrap gap-2">
                   {active.stack.map((s) => (
-                    <span key={s} className="rounded-full border border-border bg-surface px-3 py-1 text-xs text-muted-foreground">
+                    <span
+                      key={s}
+                      className="rounded-full border border-border bg-surface px-3 py-1 text-xs text-muted-foreground"
+                    >
                       {s}
                     </span>
                   ))}
@@ -180,7 +246,15 @@ export function Projects() {
   );
 }
 
-function Block({ icon, title, children }: { icon: React.ReactNode; title: string; children: React.ReactNode }) {
+function Block({
+  icon,
+  title,
+  children,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  children: React.ReactNode;
+}) {
   return (
     <div className="rounded-xl border border-border bg-surface/60 p-4">
       <div className="mb-2 flex items-center gap-2 text-primary">

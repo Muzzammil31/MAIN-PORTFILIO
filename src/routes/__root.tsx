@@ -77,14 +77,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Muzammil Hussain | AI Engineer" },
+      {
+        name: "description",
+        content:
+          "AI engineering portfolio featuring real-world AI software, LLMs, RAG, machine learning and computer vision.",
+      },
+      { name: "author", content: "Muzammil Hussain" },
+      { property: "og:title", content: "Muzammil Hussain | AI Engineer" },
+      {
+        property: "og:description",
+        content:
+          "AI engineering portfolio featuring real-world AI software, LLMs, RAG, machine learning and computer vision.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },

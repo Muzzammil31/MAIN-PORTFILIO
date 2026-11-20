@@ -76,20 +76,30 @@
   --surface: oklch(0.21 0.035 265);
   --surface-2: oklch(0.25 0.04 268);
 
-  --gradient-hero: radial-gradient(
+  --gradient-hero:
+    radial-gradient(
       120% 90% at 15% 0%,
       color-mix(in oklab, var(--cyan) 26%, transparent),
       transparent 60%
     ),
-    radial-gradient(100% 80% at 90% 10%, color-mix(in oklab, var(--violet) 30%, transparent), transparent 62%),
-    radial-gradient(90% 70% at 60% 100%, color-mix(in oklab, var(--amber) 14%, transparent), transparent 65%);
+    radial-gradient(
+      100% 80% at 90% 10%,
+      color-mix(in oklab, var(--violet) 30%, transparent),
+      transparent 62%
+    ),
+    radial-gradient(
+      90% 70% at 60% 100%,
+      color-mix(in oklab, var(--amber) 14%, transparent),
+      transparent 65%
+    );
   --gradient-line: linear-gradient(90deg, var(--cyan), var(--violet), var(--amber));
   --gradient-card: linear-gradient(
     150deg,
     color-mix(in oklab, var(--cyan) 10%, var(--surface)),
     color-mix(in oklab, var(--violet) 9%, var(--surface))
   );
-  --shadow-glow: 0 0 0 1px color-mix(in oklab, var(--cyan) 25%, transparent),
+  --shadow-glow:
+    0 0 0 1px color-mix(in oklab, var(--cyan) 25%, transparent),
     0 18px 50px -20px color-mix(in oklab, var(--cyan) 55%, transparent);
   --shadow-violet: 0 20px 60px -24px color-mix(in oklab, var(--violet) 70%, transparent);
 }
@@ -159,7 +169,8 @@
 }
 
 @utility grid-bg {
-  background-image: linear-gradient(color-mix(in oklab, var(--cyan) 9%, transparent) 1px, transparent 1px),
+  background-image:
+    linear-gradient(color-mix(in oklab, var(--cyan) 9%, transparent) 1px, transparent 1px),
     linear-gradient(90deg, color-mix(in oklab, var(--cyan) 9%, transparent) 1px, transparent 1px);
   background-size: 54px 54px;
 }
@@ -210,4 +221,334 @@
 .reveal.is-visible {
   opacity: 1;
   transform: none;
+}
+
+/* 2026 portfolio refresh — editorial, accessible midnight blue design */
+:root {
+  --radius: 1rem;
+  --background: #09111e;
+  --foreground: #f2f6fb;
+  --card: #111d2d;
+  --card-foreground: #f2f6fb;
+  --popover: #111c2b;
+  --popover-foreground: #f2f6fb;
+  --primary: #a5cef5;
+  --primary-foreground: #09111e;
+  --secondary: #1e2b3c;
+  --secondary-foreground: #f2f6fb;
+  --muted: #1a2839;
+  --muted-foreground: #a5b4c9;
+  --accent: #b7baf4;
+  --accent-foreground: #0a1120;
+  --destructive: #f58e97;
+  --destructive-foreground: #0a1120;
+  --border: rgb(167 197 229 / 14%);
+  --input: rgb(167 197 229 / 18%);
+  --ring: #a5cef5;
+  --cyan: #a5cef5;
+  --violet: #b7baf4;
+  --amber: #e0c5a5;
+  --lime: #a3e4ce;
+  --surface: #111d2c;
+  --surface-2: #1a2a3e;
+  --gradient-hero:
+    radial-gradient(ellipse 65% 80% at 70% 12%, rgb(76 117 173 / 12%), transparent 70%),
+    radial-gradient(ellipse 55% 65% at 8% 65%, rgb(92 109 166 / 9%), transparent 70%);
+  --gradient-line: linear-gradient(108deg, #a5cef5, #b8bdf6);
+  --gradient-card: linear-gradient(135deg, rgb(133 180 221 / 8%), rgb(128 130 190 / 4%));
+  --shadow-glow: 0 0 0 1px rgb(165 206 245 / 28%), 0 24px 65px -40px rgb(141 190 239 / 32%);
+  --shadow-violet: 0 20px 60px -38px rgb(183 186 244 / 35%);
+}
+body {
+  background:
+    radial-gradient(circle at 3% 5%, rgb(93 130 170 / 7%), transparent 26%),
+    radial-gradient(circle at 96% 58%, rgb(84 102 168 / 6%), transparent 26%), var(--background);
+}
+html {
+  scroll-padding-top: 6rem;
+}
+section {
+  scroll-margin-top: 5rem;
+}
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: -0.035em;
+}
+@utility panel {
+  background: linear-gradient(152deg, rgb(23 37 54 / 96%), rgb(13 24 39 / 97%));
+  border: 1px solid rgb(157 188 222 / 14%);
+  border-radius: 1.35rem;
+  box-shadow: 0 14px 45px -38px rgb(0 0 0 / 80%);
+  backdrop-filter: blur(12px);
+}
+@utility grid-bg {
+  background-image:
+    linear-gradient(rgb(146 174 213 / 3%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(146 174 213 / 3%) 1px, transparent 1px);
+  background-size: 65px 65px;
+}
+@utility gradient-text {
+  color: #b4dcfc;
+  background-image: linear-gradient(110deg, #e3f0ff, #9cbff3 58%, #bfc3fa);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+.reveal {
+  transition-duration: 0.65s;
+}
+.hero-shell {
+  border-bottom: 1px solid rgb(167 197 229 / 11%);
+}
+.hero-ambient {
+  background:
+    radial-gradient(circle at 79% 28%, rgb(100 147 217 / 15%), transparent 35%),
+    radial-gradient(circle at 27% 7%, rgb(114 129 209 / 7%), transparent 38%);
+}
+.hero-heading {
+  font-size: clamp(3.85rem, 8.2vw, 7.8rem);
+  line-height: 0.96;
+  color: var(--foreground);
+}
+.hero-heading-accent {
+  background: linear-gradient(115deg, #c5e2fb 4%, #83b8e8 50%, #b7b8ee 96%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.eyebrow-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  border: 1px solid rgb(151 215 185 / 26%);
+  background: rgb(109 172 148 / 8%);
+  border-radius: 99px;
+  padding: 0.45rem 0.85rem;
+  font-size: 0.73rem;
+  font-weight: 600;
+  color: #addfc7;
+}
+.status-dot {
+  display: inline-block;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: #9de7c5;
+  box-shadow: 0 0 0 4px rgb(157 231 197 / 9%);
+}
+.hero-primary-cta {
+  background: #b3d7f8;
+  color: #0d1c31;
+  box-shadow: 0 15px 45px -25px rgb(154 202 251 / 40%);
+}
+.hero-primary-cta:hover {
+  background: #d4e9ff;
+}
+.hero-secondary-cta,
+.hero-icon-link {
+  border: 1px solid rgb(167 197 229 / 22%);
+  background: rgb(20 33 49 / 74%);
+  color: #e4eaf2;
+}
+.hero-icon-link {
+  width: 2.85rem;
+  height: 2.85rem;
+  display: grid;
+  place-items: center;
+  border-radius: 0.75rem;
+  transition:
+    border-color 0.2s,
+    transform 0.2s;
+}
+.hero-icon-link:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+.hero-visual-main {
+  border: 1px solid rgb(160 191 228 / 20%);
+  background:
+    radial-gradient(circle at 52% 44%, rgb(125 168 227 / 17%), transparent 43%),
+    linear-gradient(145deg, #17283e, #101b2b 65%, #0d1725);
+  box-shadow: 0 40px 100px -57px rgb(58 99 158 / 65%);
+}
+.hero-visual-main:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgb(174 210 244 / 18%) 0.65px, transparent 1px);
+  background-size: 18px 18px;
+  mask-image: radial-gradient(circle at 50% 50%, black, transparent 75%);
+}
+.hero-orbit {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border: 1px solid rgb(159 198 239 / 18%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+.hero-orbit-outer {
+  width: 19.5rem;
+  height: 19.5rem;
+}
+.hero-orbit-middle {
+  width: 15.5rem;
+  height: 15.5rem;
+  border-style: dashed;
+  border-color: rgb(173 202 242 / 14%);
+}
+.hero-orbit-inner {
+  width: 12.2rem;
+  height: 12.2rem;
+  background: rgb(109 147 202 / 4%);
+}
+.hero-monogram {
+  background: linear-gradient(140deg, #b9dffc, #859bc7);
+  color: #12253e;
+  border: 1px solid rgb(238 248 255 / 30%);
+  box-shadow: 0 18px 80px -25px rgb(147 182 242 / 35%);
+}
+.hero-satellite {
+  position: absolute;
+  z-index: 12;
+  width: 2.8rem;
+  height: 2.8rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgb(160 192 229 / 30%);
+  background: #15273c;
+  color: #afcff0;
+  border-radius: 0.95rem;
+  box-shadow: 0 14px 30px rgb(0 0 0 / 23%);
+}
+.satellite-one {
+  left: 11%;
+  top: 20%;
+  transform: rotate(-12deg);
+}
+.satellite-two {
+  right: 6%;
+  top: 32%;
+  transform: rotate(9deg);
+}
+.satellite-three {
+  bottom: 13%;
+  left: 18%;
+  transform: rotate(8deg);
+}
+.hero-tech-pill {
+  border: 1px solid rgb(162 192 230 / 15%);
+  border-radius: 99px;
+  background: rgb(173 204 243 / 6%);
+  padding: 0.48rem 0.8rem;
+  font-size: 0.72rem;
+  color: #d2dfef;
+}
+.hero-float-card {
+  z-index: 20;
+  border: 1px solid rgb(157 190 226 / 22%);
+  background: #152235;
+}
+.hero-stat-card {
+  border: 1px solid rgb(162 191 225 / 15%);
+  background: linear-gradient(160deg, rgb(23 38 56 / 87%), rgb(15 27 42 / 85%));
+}
+.hero-stat-card:hover {
+  border-color: rgb(159 198 239 / 30%);
+}
+.project-artwork {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 20% 24%, rgb(151 188 236 / 18%), transparent 40%),
+    linear-gradient(140deg, #1b2d47, #111d2f 80%);
+}
+.project-artwork:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.35;
+  background-image:
+    linear-gradient(rgb(176 206 241 / 9%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(176 206 241 / 9%) 1px, transparent 1px);
+  background-size: 34px 34px;
+  mask-image: linear-gradient(110deg, black, transparent 94%);
+}
+.project-artwork:after {
+  content: "";
+  position: absolute;
+  width: 12rem;
+  height: 12rem;
+  right: -3rem;
+  top: -5rem;
+  border-radius: 50%;
+  border: 26px solid rgb(159 190 242 / 9%);
+}
+.project-artwork-symbol {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 4.6rem;
+  height: 4.6rem;
+  border: 1px solid rgb(166 202 239 / 34%);
+  border-radius: 1.4rem;
+  background: rgb(152 187 237 / 9%);
+  box-shadow: 0 12px 45px -22px rgb(128 179 238 / 45%);
+  color: #c1deff;
+}
+.project-artwork-label {
+  position: relative;
+  z-index: 1;
+  max-width: 85%;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  color: #f2f6fd;
+}
+@media (max-width: 640px) {
+  .hero-heading {
+    font-size: clamp(3.65rem, 14vw, 5.5rem);
+  }
+  .hero-visual-main {
+    padding: 1.4rem;
+  }
+  .hero-orbit-outer {
+    width: 16rem;
+    height: 16rem;
+  }
+  .hero-orbit-middle {
+    width: 12.8rem;
+    height: 12.8rem;
+  }
+  .hero-orbit-inner {
+    width: 10rem;
+    height: 10rem;
+  }
+  .hero-monogram {
+    height: 8rem;
+    width: 8rem;
+    font-size: 3.15rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }

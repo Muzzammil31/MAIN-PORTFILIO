@@ -47,7 +47,6 @@ export function Reveal({
 export function SmartImage({
   src,
   alt,
-  label,
   className = "",
   imgClassName = "",
 }: {
@@ -75,15 +74,14 @@ export function SmartImage({
   if (status !== "ok") {
     return (
       <div
-        className={`flex flex-col items-center justify-center gap-2 bg-[image:var(--gradient-card)] text-center ${className}`}
+        className={`project-artwork flex flex-col items-center justify-center gap-4 px-6 py-8 ${className}`}
+        role="img"
+        aria-label={alt}
       >
-        <div className="grid h-10 w-10 place-items-center rounded-full bg-[image:var(--gradient-line)] opacity-80">
-          <Maximize2 className="h-4 w-4 text-background" />
-        </div>
-        <p className="px-3 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
-          {label ?? "Image slot"}
-        </p>
-        <p className="px-4 font-mono text-[10px] text-muted-foreground/70">{src}</p>
+        <span className="project-artwork-symbol">
+          <Maximize2 className="h-8 w-8" />
+        </span>
+        <span className="project-artwork-label">{alt}</span>
       </div>
     );
   }
@@ -147,8 +145,14 @@ export function Lightbox({
   onIndex: (i: number) => void;
   caption?: string;
 }) {
-  const next = useCallback(() => onIndex((index + 1) % images.length), [index, images.length, onIndex]);
-  const prev = useCallback(() => onIndex((index - 1 + images.length) % images.length), [index, images.length, onIndex]);
+  const next = useCallback(
+    () => onIndex((index + 1) % images.length),
+    [index, images.length, onIndex],
+  );
+  const prev = useCallback(
+    () => onIndex((index - 1 + images.length) % images.length),
+    [index, images.length, onIndex],
+  );
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {

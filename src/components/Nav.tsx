@@ -39,7 +39,10 @@ export function Nav() {
   return (
     <>
       <div className="fixed left-0 top-0 z-[70] h-0.5 w-full bg-transparent">
-        <div className="h-full bg-[image:var(--gradient-line)] transition-[width] duration-150" style={{ width: `${progress}%` }} />
+        <div
+          className="h-full bg-[image:var(--gradient-line)] transition-[width] duration-150"
+          style={{ width: `${progress}%` }}
+        />
       </div>
 
       <header
@@ -47,25 +50,31 @@ export function Nav() {
           scrolled ? "border-b border-border bg-background/80 backdrop-blur-xl" : "bg-transparent"
         }`}
       >
-        <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3">
+        <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3.5">
           <a href="#home" className="group flex items-center gap-3">
             <span className="relative grid h-10 w-10 place-items-center rounded-xl bg-[image:var(--gradient-line)] font-display text-sm font-bold text-background">
               MH
               <span className="absolute inset-0 rounded-xl bg-[image:var(--gradient-line)] opacity-40 blur-md transition-opacity group-hover:opacity-70" />
             </span>
             <span className="hidden sm:block">
-              <span className="block font-display text-sm font-semibold tracking-tight">MUZAMMIL.AI</span>
-              <span className="block font-mono text-[10px] uppercase tracking-[0.28em] text-muted-foreground">AI Engineering</span>
+              <span className="block font-display text-sm font-semibold tracking-tight">
+                MUZAMMIL.AI
+              </span>
+              <span className="block font-mono text-[10px] uppercase tracking-[0.28em] text-muted-foreground">
+                AI Engineering
+              </span>
             </span>
           </a>
 
-          <div className="hidden items-center gap-1 lg:flex">
+          <div className="hidden items-center gap-1 xl:flex">
             {links.map((l) => (
               <a
                 key={l.id}
                 href={`#${l.id}`}
                 className={`relative rounded-full px-3 py-1.5 text-sm transition-colors ${
-                  active === l.id ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                  active === l.id
+                    ? "text-foreground"
+                    : "text-muted-foreground hover:text-foreground"
                 }`}
               >
                 {active === l.id && (
@@ -85,7 +94,7 @@ export function Nav() {
             </a>
             <button
               onClick={() => setOpen((v) => !v)}
-              className="grid h-10 w-10 place-items-center rounded-xl border border-border bg-surface lg:hidden"
+              className="grid h-10 w-10 place-items-center rounded-xl border border-border bg-surface xl:hidden"
               aria-label="Toggle menu"
             >
               {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -94,7 +103,7 @@ export function Nav() {
         </nav>
 
         {open && (
-          <div className="border-t border-border bg-background/95 px-5 py-4 backdrop-blur-xl lg:hidden">
+          <div className="border-t border-border bg-background/95 px-5 py-4 backdrop-blur-xl xl:hidden">
             <div className="grid grid-cols-2 gap-2">
               {links.map((l) => (
                 <a

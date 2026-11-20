@@ -27,7 +27,7 @@ export type Certificate = {
 export const profile = {
   name: "Muzammil Hussain",
   role: "Artificial Intelligence Engineer",
-  tagline: "Building practical AI solutions for real-world problems.",
+  tagline: "Building intelligent software that moves beyond prototypes and solves real problems.",
   summary:
     "Artificial Intelligence Engineer with one year of practical experience across AI, machine learning, deep learning, NLP, computer vision, automation and LLM-based applications.",
   summary2:
@@ -35,18 +35,21 @@ export const profile = {
   degree: "BS in Artificial Intelligence",
   university: "University of Haripur",
   location: "Wah Cantt, Pakistan",
-  focus: "AI automation, LLM applications and multimodal medical AI research",
+  focus: "Production AI automation, LLM/RAG systems, agentic workflows and computer vision",
   email: "muzzammilhus26@gmail.com",
   linkedin: "https://www.linkedin.com/in/muzammil-hussain-864752246",
   github: "https://github.com/Muzzammil31",
   fiverr: "https://www.fiverr.com/muzamil_47",
   assistant: "https://violet-jacynth-89.tiiny.site",
   avatar: "/images/profile.jpg",
+  phone: "+923180523076",
+  website: "https://muzammil-ai-os.lovable.app/",
+  universityAssistant: "http://121.52.149.158:12380/",
 };
 
 export const stats = [
   { label: "Practical experience", value: 1, suffix: " year" },
-  { label: "AI projects", value: 7, suffix: "+" },
+  { label: "AI projects & concepts", value: 18, suffix: "" },
   { label: "Internships", value: 6, suffix: "" },
   { label: "Documented certificates", value: 2, suffix: "" },
 ];
@@ -58,6 +61,7 @@ export const openRoles = [
   "Deep Learning Engineer",
   "LLM Application Developer",
   "AI Automation Engineer",
+  "Computer Vision Engineer",
 ];
 
 export const projects: Project[] = [
@@ -66,7 +70,8 @@ export const projects: Project[] = [
     code: "AI-01",
     title: "UOH AI Assistant",
     tagline: "Deployed university assistant · Final Year Project",
-    problem: "Students need a practical place to ask university-related academic and administrative questions.",
+    problem:
+      "Students need a practical place to ask university-related academic and administrative questions.",
     architecture: [
       "Retrieval-Augmented Generation (RAG)",
       "University information and document handling",
@@ -78,7 +83,8 @@ export const projects: Project[] = [
       "File handling for a more useful student assistant",
       "Successfully deployed for use in a government-university environment",
     ],
-    contribution: "Designed and developed the assistant as a BS Artificial Intelligence Final Year Project.",
+    contribution:
+      "Designed and developed the assistant as a BS Artificial Intelligence Final Year Project.",
     stack: ["AI", "LLMs", "RAG", "Voice", "Multilingual", "File handling"],
     images: ["/images/projects/uoh-assistant-1.jpg", "/images/projects/uoh-assistant-2.jpg"],
     accent: "cyan",
@@ -88,7 +94,8 @@ export const projects: Project[] = [
     code: "AI-02",
     title: "AI Interview Assistant",
     tagline: "AI-assisted interview interaction with audio support",
-    problem: "Interview practice can benefit from timely, relevant support and an audio-based interaction flow.",
+    problem:
+      "Interview practice can benefit from timely, relevant support and an audio-based interaction flow.",
     architecture: [
       "OpenRouter API integration",
       "AI model integration for question responses",
@@ -109,7 +116,8 @@ export const projects: Project[] = [
     code: "AI-03",
     title: "Kaswa Company AI Software",
     tagline: "Independently built and delivered for a marketing and investment company",
-    problem: "The company needed a substantial AI-based software solution tailored to its business needs.",
+    problem:
+      "The company needed a substantial AI-based software solution tailored to its business needs.",
     architecture: [
       "Independently planned system architecture",
       "AI software and automation features",
@@ -151,7 +159,8 @@ export const projects: Project[] = [
     code: "AI-05",
     title: "Vehicle & Helmet Detection",
     tagline: "Computer vision and number-plate OCR for traffic monitoring",
-    problem: "Traffic monitoring needs to identify helmet compliance and capture vehicle plates when a rider is not wearing a helmet.",
+    problem:
+      "Traffic monitoring needs to identify helmet compliance and capture vehicle plates when a rider is not wearing a helmet.",
     architecture: [
       "Computer-vision vehicle and helmet detection",
       "Automatic number-plate detection",
@@ -171,7 +180,8 @@ export const projects: Project[] = [
     code: "AI-06",
     title: "AI Motion Detection",
     tagline: "Real-time video analysis to identify moving objects",
-    problem: "Monitoring video for moving objects can benefit from automated frame-by-frame analysis.",
+    problem:
+      "Monitoring video for moving objects can benefit from automated frame-by-frame analysis.",
     architecture: [
       "Video-frame preprocessing",
       "Feature extraction",
@@ -191,7 +201,8 @@ export const projects: Project[] = [
     code: "AI-07",
     title: "Medical & Radiology AI Research",
     tagline: "Research focus: multimodal AI for reports and radiology images",
-    problem: "Interpreting medical reports alongside radiology images is a complex multimodal research challenge.",
+    problem:
+      "Interpreting medical reports alongside radiology images is a complex multimodal research challenge.",
     architecture: [
       "Agentic AI and multimodal models",
       "Large Language Models (LLMs)",
@@ -201,19 +212,227 @@ export const projects: Project[] = [
       "Research framework for interpreting medical reports and radiology images",
       "Combines multimodal AI, language models and retrieval",
     ],
-    contribution: "Developing research focused on using AI to assist medical-report and radiology-image interpretation.",
+    contribution:
+      "Developing research focused on using AI to assist medical-report and radiology-image interpretation.",
     stack: ["Agentic AI", "Multimodal AI", "Medical AI", "LLMs", "RAG"],
     images: ["/images/projects/medical-ai-1.jpg", "/images/projects/medical-ai-2.jpg"],
     accent: "amber",
+  },
+  // Additional projects documented in the updated November 2026 CV.
+  {
+    id: "news-sentiment",
+    code: "AI-08",
+    title: "News Sentiment Analysis",
+    tagline: "An AI-powered dashboard for understanding Pakistani news sentiment",
+    problem: "News reporting can be difficult to compare and interpret at scale.",
+    architecture: [
+      "News collection and preprocessing",
+      "NLP-based sentiment classification",
+      "Web dashboard and one-click launcher",
+    ],
+    features: [
+      "Aggregates local news",
+      "Performs sentiment analysis",
+      "Presents results using visual dashboards",
+    ],
+    contribution: "Developed an end-to-end news analysis web application.",
+    stack: ["NLP", "Sentiment analysis", "Full-stack", "Dashboards"],
+    images: [],
+    accent: "violet",
+  },
+  {
+    id: "job-agent",
+    code: "AI-09",
+    title: "AI Job Application Agent",
+    tagline: "CV-aware job discovery and application automation",
+    problem: "Manually reviewing job posts and assessing compatibility is repetitive.",
+    architecture: [
+      "Automated vacancy discovery",
+      "CV-to-job matching",
+      "Application workflow automation",
+    ],
+    features: [
+      "Finds relevant job opportunities",
+      "Matches jobs with CV information",
+      "Supports applying to suitable positions",
+    ],
+    contribution: "Built an AI-enabled job-search and application workflow.",
+    stack: ["AI agent", "Automation", "Job matching"],
+    images: [],
+    accent: "cyan",
+  },
+  {
+    id: "crash-detection",
+    code: "AI-10",
+    title: "Vehicle Crash Detection",
+    tagline: "YOLO-based accident detection from traffic video",
+    problem:
+      "Identifying potential road accidents from video requires consistent visual monitoring.",
+    architecture: ["Video-frame analysis", "YOLO-based detection", "Computer-vision inference"],
+    features: ["Analyzes road footage", "Identifies potential vehicle crashes"],
+    contribution: "Built a computer-vision vehicle accident detection system.",
+    stack: ["YOLO", "Computer vision", "Video analysis"],
+    images: [],
+    accent: "amber",
+  },
+  {
+    id: "pothole-detection",
+    code: "AI-11",
+    title: "Pothole Detection System",
+    tagline: "Deep learning for roadway hazard detection on edge devices",
+    problem: "Roadway potholes can pose safety risks and are difficult to assess manually.",
+    architecture: [
+      "Image input and preprocessing",
+      "Deep-learning detection",
+      "Jetson Nano deployment target",
+    ],
+    features: ["Detects roadway potholes", "Designed for a compact edge AI environment"],
+    contribution: "Designed a pothole-detection system intended for Jetson Nano.",
+    stack: ["Deep learning", "Computer vision", "Jetson Nano"],
+    images: [],
+    accent: "lime",
+  },
+  {
+    id: "bone-fracture",
+    code: "AI-12",
+    title: "Bone Fracture Detection",
+    tagline: "Deep learning applied to medical imaging",
+    problem: "Medical-image classification requires careful visual pattern detection.",
+    architecture: [
+      "Medical image preprocessing",
+      "Deep-learning inference",
+      "Fracture classification",
+    ],
+    features: [
+      "Analyzes bone images for signs of fractures",
+      "Explores AI-assisted medical image analysis",
+    ],
+    contribution: "Developed a medical image-analysis project using deep learning.",
+    stack: ["Deep learning", "Medical imaging", "Computer vision"],
+    images: [],
+    accent: "violet",
+  },
+  {
+    id: "insect-detection",
+    code: "AI-13",
+    title: "Insect Detection Desktop App",
+    tagline: "Image recognition with a desktop interface",
+    problem: "Recognizing insects from pictures can be challenging without specialised tools.",
+    architecture: ["Image ingestion", "AI-based insect identification", "Desktop GUI workflow"],
+    features: ["Recognizes insects from images", "Provides an accessible desktop interface"],
+    contribution: "Developed a desktop AI application for insect identification.",
+    stack: ["Image classification", "AI", "Desktop application"],
+    images: [],
+    accent: "cyan",
+  },
+  {
+    id: "urdu-translator",
+    code: "AI-14",
+    title: "Language Translator App",
+    tagline: "A graphical translation tool with Urdu support",
+    problem: "People need practical translation tools that support multiple languages.",
+    architecture: ["Text input", "Language translation", "Graphical user interface"],
+    features: ["Provides text translation", "Includes Urdu-language support"],
+    contribution: "Built a GUI-based language translation application.",
+    stack: ["NLP", "Translation", "Urdu", "GUI"],
+    images: [],
+    accent: "lime",
+  },
+  {
+    id: "news-scraper",
+    code: "AI-15",
+    title: "News Scraper System",
+    tagline: "Automated collection of Pakistani news data",
+    problem: "Gathering news articles manually makes content analysis inefficient.",
+    architecture: [
+      "Web content retrieval",
+      "Extraction and parsing",
+      "Respectful robots.txt-aware crawling",
+    ],
+    features: [
+      "Collects news from Pakistani news websites",
+      "Handles source access restrictions appropriately",
+    ],
+    contribution: "Developed a web-scraping pipeline for news collection.",
+    stack: ["Web scraping", "Python", "Data collection", "Automation"],
+    images: [],
+    accent: "amber",
+  },
+  {
+    id: "image-classification",
+    code: "AI-16",
+    title: "Image Classification Training Pipeline",
+    tagline: "Research-ready model training and evaluation in PyTorch",
+    problem: "Training and comparing different vision models needs a repeatable process.",
+    architecture: [
+      "EfficientNet, ResNet and ConvNeXt",
+      "Image augmentation and preprocessing",
+      "Model evaluation workflow",
+    ],
+    features: [
+      "Supports multiple model architectures",
+      "Includes augmentation and evaluation utilities",
+    ],
+    contribution: "Created a configurable PyTorch image-classification training framework.",
+    stack: ["PyTorch", "EfficientNet", "ResNet", "ConvNeXt"],
+    images: [],
+    accent: "violet",
+  },
+  {
+    id: "emotion-ai",
+    code: "AI-17",
+    title: "Emotion-Aware Conversation AI",
+    tagline: "Exploring more natural, context-aware AI conversations",
+    problem: "AI assistants can miss important emotional nuance in user interactions.",
+    architecture: [
+      "Conversation context analysis",
+      "Emotion-aware response logic",
+      "Iterative dialogue improvement",
+    ],
+    features: [
+      "Explores emotional context in conversations",
+      "Aims to improve response quality and relevance",
+    ],
+    contribution: "Worked on a project to improve conversational AI interactions.",
+    stack: ["Conversational AI", "NLP", "Emotion recognition"],
+    images: [],
+    accent: "lime",
+  },
+  {
+    id: "muzzammil-robot",
+    code: "AI-18",
+    title: "Muzzammil Robot",
+    tagline: "Personal AI assistant and automation concept",
+    problem: "Personal automation can be simplified through a unified AI assistant.",
+    architecture: [
+      "AI assistant concepts",
+      "Automation integration planning",
+      "Interactive robot interface",
+    ],
+    features: ["Personal assistant concept", "Planned extensions for automation"],
+    contribution:
+      "Exploring a personal AI assistant and robotics concept; future features are planned.",
+    stack: ["AI assistant", "Robotics", "Automation concept"],
+    images: [],
+    accent: "cyan",
   },
 ];
 
 export const skillDomains = [
   {
     name: "AI & machine learning",
-    items: ["Artificial Intelligence", "Machine Learning", "Deep Learning", "Model training", "Model evaluation"],
+    items: [
+      "Artificial Intelligence",
+      "Machine Learning",
+      "Deep Learning",
+      "Model training",
+      "Model evaluation",
+    ],
   },
-  { name: "Deep learning frameworks", items: ["PyTorch", "TensorFlow", "Scikit-learn"] },
+  {
+    name: "Deep learning frameworks",
+    items: ["PyTorch", "TensorFlow", "Scikit-learn", "EfficientNet", "ResNet", "ConvNeXt"],
+  },
   {
     name: "Programming",
     items: ["Python", "NumPy", "Pandas", "Matplotlib", "Java", "Spring Boot"],
@@ -223,17 +442,64 @@ export const skillDomains = [
     items: ["LLM applications", "RAG", "OpenRouter API", "AI automation", "AI system development"],
   },
   {
+    name: "Computer vision",
+    items: [
+      "OpenCV",
+      "YOLO",
+      "OCR",
+      "Image classification",
+      "Video analysis",
+      "Medical image analysis",
+    ],
+  },
+  {
     name: "Web development",
     items: ["HTML", "CSS", "JavaScript", "React (basic)", "Backend APIs"],
   },
-  { name: "Data & visualization", items: ["Data preprocessing", "Feature engineering", "EDA", "Seaborn", "Power BI"] },
+  {
+    name: "Data & visualization",
+    items: ["Data preprocessing", "Feature engineering", "EDA", "Seaborn", "Power BI"],
+  },
+  {
+    name: "Professional skills",
+    items: [
+      "Problem-solving",
+      "Independent delivery",
+      "Critical thinking",
+      "System testing",
+      "Team collaboration",
+      "Technical documentation",
+    ],
+  },
   {
     name: "Tools & collaboration",
-    items: ["Git", "GitHub", "Jupyter Notebook", "Google Colab", "VS Code", "Anaconda", "Problem-solving", "Team collaboration"],
+    items: [
+      "Git",
+      "GitHub",
+      "Jupyter Notebook",
+      "Google Colab",
+      "VS Code",
+      "Anaconda",
+      "Problem-solving",
+      "Team collaboration",
+    ],
   },
 ];
 
 export const experience = [
+  {
+    role: "AI Software Developer — UOH AI Assistant",
+    org: "University of Haripur",
+    period: "2026",
+    note: "Deployed academic AI system · Final Year Project",
+    points: [
+      "Designed and deployed an AI university assistant for students and academic services",
+      "Integrated retrieval-augmented generation (RAG), voice interaction and multilingual support",
+      "Added file handling and university-information capabilities",
+      "Delivered the system for practical use in a government university environment",
+    ],
+    stack: ["RAG", "LLMs", "Multilingual", "Voice", "Deployment"],
+  },
   {
     role: "AI Engineer",
     org: "Red Fort Company · AI & Automation",
@@ -267,37 +533,43 @@ export const internships = [
     org: "RFT 360 (SMC-Private) Limited",
     role: "AI Automation Intern",
     year: "Aug 2026 – Present",
-    detail: "Developing AI-powered automation workflows; contributing to AI software development, testing and system improvements under a Senior Developer.",
+    detail:
+      "Developing AI-powered automation workflows; contributing to AI software development, testing and system improvements under a Senior Developer.",
   },
   {
     org: "Technik Nest",
     role: "AI / Software Development Intern",
     year: "2025 · 3 months",
-    detail: "Completed an international internship contributing to software-development projects and practical AI / software tasks.",
+    detail:
+      "Completed an international internship contributing to software-development projects and practical AI / software tasks.",
   },
   {
     org: "Arch Technologies",
     role: "Software Development Intern",
     year: "2025",
-    detail: "Assisted with software development and AI model integration, and helped debug and improve internal tools.",
+    detail:
+      "Assisted with software development and AI model integration, and helped debug and improve internal tools.",
   },
   {
     org: "CodeAlpha",
     role: "Machine Learning Intern",
     year: "2024",
-    detail: "Worked with machine-learning algorithms and data visualization; contributed to dashboards and model-output analysis.",
+    detail:
+      "Worked with machine-learning algorithms and data visualization; contributed to dashboards and model-output analysis.",
   },
   {
     org: "Empowered",
     role: "AI Research & Automation Intern",
     year: "2024",
-    detail: "Supported AI product research and automation work, with dataset preparation and AI-module documentation.",
+    detail:
+      "Supported AI product research and automation work, with dataset preparation and AI-module documentation.",
   },
   {
     org: "Brainware",
     role: "Deep Learning Intern",
     year: "2023",
-    detail: "Contributed to deep-learning prototypes, tested models and suggested performance improvements.",
+    detail:
+      "Contributed to deep-learning prototypes, tested models and suggested performance improvements.",
   },
 ];
 
@@ -307,7 +579,8 @@ export const certificates: Certificate[] = [
     title: "Company-Wide Software Solution Delivery",
     issuer: "Kaswa Marketing & Business Developers",
     category: "Project Recognition",
-    description: "Awarded for successfully designing and delivering a company-wide software solution.",
+    description:
+      "Awarded for successfully designing and delivering a company-wide software solution.",
     date: "2025",
     credentialId: "Not listed",
     skills: ["Software development", "AI solution delivery", "Independent project work"],
@@ -318,7 +591,8 @@ export const certificates: Certificate[] = [
     title: "Enterprise Software Development – Project Completion Certificate",
     issuer: "Technik Nest",
     category: "Project Certificate",
-    description: "Documents enterprise software-development project work during an international internship.",
+    description:
+      "Documents enterprise software-development project work during an international internship.",
     date: "Not listed",
     credentialId: "TN/IN01/AM/003",
     skills: ["Enterprise software development", "Software projects", "Practical experience"],
@@ -344,7 +618,8 @@ export const achievements = {
     },
     {
       title: "Kaswa company-wide software delivery",
-      detail: "Independently designed, developed and delivered a functional AI-based company solution.",
+      detail:
+        "Independently designed, developed and delivered a functional AI-based company solution.",
     },
   ],
   research: [
