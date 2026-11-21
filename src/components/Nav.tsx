@@ -10,6 +10,7 @@ const links = [
   { id: "certificates", label: "Certificates" },
   { id: "education", label: "Education" },
   { id: "achievements", label: "Research" },
+  { id: "participation", label: "Participation" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -54,9 +55,15 @@ export function Nav() {
       >
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3.5">
           <a href="#home" className="group flex items-center gap-3">
-            <span className="relative grid h-10 w-10 place-items-center rounded-xl bg-primary font-display text-sm font-bold text-primary-foreground">
-              MH
-              <span className="absolute inset-0 rounded-xl bg-[image:var(--gradient-line)] opacity-40 blur-md transition-opacity group-hover:opacity-70" />
+            <span className="profile-avatar-nav relative grid h-10 w-10 shrink-0 overflow-hidden rounded-xl border border-primary/20 bg-primary/10 shadow-sm">
+              <img
+                src={`${import.meta.env.BASE_URL}images/muzammil-profile.jpg`}
+                alt="Muzammil Hussain"
+                className="h-full w-full object-cover"
+                width={40}
+                height={40}
+                loading="eager"
+              />
             </span>
             <span className="hidden sm:block">
               <span className="block font-display text-sm font-semibold tracking-tight">
@@ -68,16 +75,25 @@ export function Nav() {
             </span>
           </a>
 
-          <div className="hidden items-center gap-1 xl:flex">
+          <div className="hidden items-center gap-0.5 xl:flex">
             {links
               .filter((l) =>
-                ["home", "about", "experience", "projects", "skills", "contact"].includes(l.id),
+                [
+                  "home",
+                  "about",
+                  "experience",
+                  "projects",
+                  "skills",
+                  "certificates",
+                  "education",
+                  "achievements",
+                ].includes(l.id),
               )
               .map((l) => (
                 <a
                   key={l.id}
                   href={`#${l.id}`}
-                  className={`relative rounded-full px-3 py-1.5 text-sm transition-colors ${
+                  className={`relative whitespace-nowrap rounded-full px-2 py-1.5 text-xs font-semibold transition-colors ${
                     active === l.id
                       ? "text-foreground"
                       : "text-muted-foreground hover:text-foreground"
@@ -95,13 +111,13 @@ export function Nav() {
             <a
               href="resume.pdf"
               download="Muzammil_Hussain_CV.pdf"
-              className="hidden items-center gap-2 rounded-xl border border-border bg-surface px-4 py-2 text-sm font-semibold text-foreground whitespace-nowrap transition-colors hover:bg-surface-2 sm:inline-flex"
+              className="hidden items-center gap-2 rounded-xl border border-border bg-surface px-3 py-2 text-xs font-semibold text-foreground whitespace-nowrap transition-colors hover:bg-surface-2 sm:inline-flex"
             >
               Download CV
             </a>
             <a
               href="#contact"
-              className="hidden items-center gap-2 rounded-full bg-[image:var(--gradient-line)] px-4 py-2 text-sm font-semibold text-background whitespace-nowrap transition-transform hover:scale-[1.04] sm:inline-flex"
+              className="hidden items-center gap-2 rounded-full bg-[image:var(--gradient-line)] px-3 py-2 text-xs font-semibold text-background whitespace-nowrap transition-transform hover:scale-[1.04] sm:inline-flex"
             >
               <Sparkles className="h-4 w-4" /> Contact me
             </a>

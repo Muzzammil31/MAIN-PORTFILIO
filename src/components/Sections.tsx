@@ -350,6 +350,34 @@ export function Achievements() {
             </div>
           </Reveal>
         </div>
+        <Reveal delay={140}>
+          <div id="participation" className="panel mt-6 p-6">
+            <h3 className="font-display text-sm font-semibold uppercase tracking-[0.17em] text-primary">
+              Project Exhibitions & Participation
+            </h3>
+            <div className="mt-4 grid gap-4 md:grid-cols-2">
+              {achievements.participation.map((item) => (
+                <article
+                  key={item.title}
+                  className="rounded-xl border border-border bg-surface/60 p-5"
+                >
+                  <h4 className="text-sm font-semibold">{item.title}</h4>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {item.detail}
+                  </p>
+                  <a
+                    href={import.meta.env.BASE_URL + item.evidence}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-flex items-center gap-2 text-xs font-semibold text-primary underline-offset-4 hover:underline"
+                  >
+                    View exhibition poster <ExternalLink className="h-4 w-4" />
+                  </a>
+                </article>
+              ))}
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

@@ -43,6 +43,14 @@ jobs:
           test -s dist/index.html
           test -s dist/resume.pdf
           test -s dist/favicon.svg
+          test -s dist/images/muzammil-profile.jpg
+          test -s dist/files/projects/uoh-assistant-poster.pdf
+          test -s dist/files/projects/ai-web-summarizer-poster.pdf
+          for scan in google-ai-essentials.jpg opswat-cip.jpg arch-generative-ai.jpg technik-nest-internship.png; do
+            test -s "dist/images/certificates/$scan"
+          done
+          grep -Rqs 'Smart Fire-Fighting Robot' dist/assets
+          grep -Rqs 'Google AI Essentials' dist/assets
           grep -Rqs 'Portfolio Assistant' dist/assets
           grep -Rqs 'muzzammilh26@gmail.com' dist/assets
           if grep -Rqs 'muzzammilhus26@gmail.com' dist/assets; then

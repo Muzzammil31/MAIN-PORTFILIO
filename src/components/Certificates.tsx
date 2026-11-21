@@ -4,7 +4,7 @@ import { certificates, type Certificate } from "@/data/portfolio";
 import { Reveal, SmartImage, Lightbox } from "@/components/Media";
 import { SectionHeader } from "@/components/SectionHeader";
 
-const categories = ["All", "AI", "Machine Learning", "Programming", "Other"];
+const categories = ["All", ...Array.from(new Set(certificates.map((c) => c.category)))];
 
 export function Certificates() {
   const [cat, setCat] = useState("All");
@@ -31,7 +31,7 @@ export function Certificates() {
           index="05"
           kicker="Credential Vault"
           title="CERTIFICATION VAULT"
-          subtitle="Verified credentials and recognitions. Open any card to see the certificate image, issuer, date, credential ID and covered skills."
+          subtitle="Certificate scans, professional recognitions, and CV-documented training. Records without a recovered scan are clearly identified."
         />
 
         <Reveal delay={80}>
@@ -63,7 +63,11 @@ export function Certificates() {
           </div>
         </Reveal>
 
-        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <p className="mt-5 text-xs font-medium text-muted-foreground">
+          Showing {list.length} of {certificates.length} credential records ·{" "}
+          {certificates.filter((c) => Boolean(c.image)).length} original document scans available
+        </p>
+        <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {list.map((c, i) => (
             <Reveal key={c.id} delay={i * 50}>
               <button
@@ -71,13 +75,28 @@ export function Certificates() {
                 className="group panel h-full w-full overflow-hidden p-0 text-left transition-all duration-300 hover:-translate-y-2 hover:glow-ring"
               >
                 <div className="relative aspect-[4/3] overflow-hidden border-b border-border">
-                  <SmartImage
-                    src={c.image}
-                    alt={c.title}
-                    label="Add certificate.jpg"
-                    className="h-full w-full"
-                    imgClassName="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
+                  {c.image ? (
+                    <SmartImage
+                      src={c.image}
+                      alt={c.title}
+                      className="h-full w-full"
+                      imgClassName="h-full w-full object-contain bg-[#ecf2fb] transition-transform duration-700 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div
+                      className="certificate-no-scan flex h-full w-full flex-col items-center justify-center gap-2 px-6 text-center"
+                      role="img"
+                      aria-label="CV-documented credential; original scan unavailable"
+                    >
+                      <BadgeCheck className="h-11 w-11 text-[#afcfff]" />
+                      <span className="text-xs font-semibold uppercase tracking-wider text-[#d8eaff]">
+                        CV-documented recognition
+                      </span>
+                      <span className="text-[11px] text-[#a9c0dc]">
+                        Original certificate image not recovered
+                      </span>
+                    </div>
+                  )}
                   <span className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent" />
                   <span className="absolute left-3 top-3 rounded-full border border-border bg-background/70 px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-primary backdrop-blur">
                     {c.category}
@@ -121,23 +140,32 @@ export function Certificates() {
               <X className="h-4 w-4" />
             </button>
 
-            <button
-              type="button"
-              onClick={() => setZoom(open.image)}
-              className="group relative block w-full overflow-hidden rounded-t-2xl border-b border-border"
-              aria-label="Enlarge certificate"
-            >
-              <SmartImage
-                src={open.image}
-                alt={open.title}
-                label="Add certificate.jpg"
-                className="aspect-[4/3] w-full bg-surface"
-                imgClassName="aspect-[4/3] w-full bg-surface object-contain"
-              />
-              <span className="absolute bottom-3 right-3 flex items-center gap-1 rounded-full border border-border bg-background/75 px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-primary backdrop-blur">
-                <Maximize2 className="h-3 w-3" /> Enlarge
-              </span>
-            </button>
+            {open.image ? (
+              <button
+                type="button"
+                onClick={() => setZoom(open.image)}
+                className="group relative block w-full overflow-hidden rounded-t-2xl border-b border-border"
+                aria-label="Enlarge original certificate scan"
+              >
+                <SmartImage
+                  src={open.image}
+                  alt={open.title}
+                  className="aspect-[4/3] w-full bg-[#edf3fb]"
+                  imgClassName="aspect-[4/3] w-full bg-[#edf3fb] object-contain"
+                />
+                <span className="absolute bottom-3 right-3 flex items-center gap-1 rounded-full border border-border bg-background/75 px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-primary backdrop-blur">
+                  <Maximize2 className="h-3 w-3" /> Enlarge scan
+                </span>
+              </button>
+            ) : (
+              <div className="certificate-no-scan flex aspect-[4/2] w-full flex-col items-center justify-center gap-3 rounded-t-2xl border-b border-border px-6 text-center">
+                <BadgeCheck className="h-12 w-12 text-[#accfff]" />
+                <p className="max-w-sm text-sm font-semibold">
+                  This credential is listed in the CV, but the original scan was not found in the
+                  available backup.
+                </p>
+              </div>
+            )}
 
             <div className="p-6">
               <span className="rounded-full border border-border bg-surface px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-primary">
@@ -164,6 +192,16 @@ export function Certificates() {
                 />
               </div>
 
+              {open.image && (
+                <a
+                  href={`${import.meta.env.BASE_URL}${open.image.slice(1)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-5 inline-flex items-center gap-2 rounded-xl border border-primary/20 bg-primary/10 px-4 py-2.5 text-xs font-semibold text-primary transition hover:bg-primary/15"
+                >
+                  <Maximize2 className="h-4 w-4" /> Open original certificate image
+                </a>
+              )}
               <div className="mt-5">
                 <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.24em] text-muted-foreground">
                   Skills covered

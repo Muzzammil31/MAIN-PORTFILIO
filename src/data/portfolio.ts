@@ -9,6 +9,7 @@ export type Project = {
   contribution: string;
   stack: string[];
   images: string[];
+  report?: string;
   accent: "cyan" | "violet" | "amber" | "lime";
 };
 
@@ -41,7 +42,7 @@ export const profile = {
   github: "https://github.com/Muzzammil31",
   fiverr: "https://www.fiverr.com/muzamil_47",
   assistant: "https://violet-jacynth-89.tiiny.site",
-  avatar: "/images/profile.jpg",
+  avatar: "/images/muzammil-profile.jpg",
   phone: "+923180523076",
   website: "https://muzzammil31.github.io/MAIN-PORTFILIO/",
   universityAssistant: "http://121.52.149.158:12380/",
@@ -49,9 +50,9 @@ export const profile = {
 
 export const stats = [
   { label: "Practical experience", value: 1, suffix: " year" },
-  { label: "AI projects & concepts", value: 19, suffix: "" },
+  { label: "AI projects & concepts", value: 20, suffix: "" },
   { label: "Internships", value: 6, suffix: "" },
-  { label: "Documented certificates", value: 2, suffix: "" },
+  { label: "Certificates & training", value: 7, suffix: "" },
 ];
 
 export const openRoles = [
@@ -93,7 +94,7 @@ export const projects: Project[] = [
       "Video workflows",
       "Captions",
     ],
-    images: [],
+    images: ["/images/projects/redfort-studio-cover.jpg"],
     accent: "violet",
   },
   {
@@ -117,7 +118,8 @@ export const projects: Project[] = [
     contribution:
       "Designed and developed the assistant as a BS Artificial Intelligence Final Year Project.",
     stack: ["AI", "LLMs", "RAG", "Voice", "Multilingual", "File handling"],
-    images: ["/images/projects/uoh-assistant-1.jpg", "/images/projects/uoh-assistant-2.jpg"],
+    images: ["/images/projects/uoh-assistant-poster.jpg"],
+    report: "files/projects/uoh-assistant-poster.pdf",
     accent: "cyan",
   },
   {
@@ -139,7 +141,7 @@ export const projects: Project[] = [
     ],
     contribution: "Developed the AI-powered assistant, API integration and audio interaction flow.",
     stack: ["OpenRouter API", "AI models", "Audio interaction"],
-    images: ["/images/projects/ai-interviewer-1.jpg", "/images/projects/ai-interviewer-2.jpg"],
+    images: ["/images/projects/ai-interview-report-cover.jpg"],
     accent: "violet",
   },
   {
@@ -161,7 +163,7 @@ export const projects: Project[] = [
     ],
     contribution: "Sole developer responsible for architecture, coding, testing and deployment.",
     stack: ["AI", "Software development", "Automation"],
-    images: ["/images/projects/kaswa-software-1.jpg", "/images/projects/kaswa-software-2.jpg"],
+    images: [],
     accent: "amber",
   },
   {
@@ -182,7 +184,11 @@ export const projects: Project[] = [
     ],
     contribution: "Developed an AI-powered platform for summarization and content analysis.",
     stack: ["NLP", "Transformer models", "AI chatbot", "Sentiment analysis"],
-    images: ["/images/projects/web-summarizer-1.jpg", "/images/projects/web-summarizer-2.jpg"],
+    images: [
+      "/images/projects/ai-web-summarizer-poster.jpg",
+      "/images/projects/ai-web-summarizer-fyp.jpg",
+    ],
+    report: "files/projects/ai-web-summarizer-poster.pdf",
     accent: "lime",
   },
   {
@@ -203,7 +209,7 @@ export const projects: Project[] = [
     ],
     contribution: "Developed an AI-based traffic-monitoring and compliance-detection system.",
     stack: ["AI", "Computer vision", "OCR"],
-    images: ["/images/projects/vehicle-helmet-1.jpg", "/images/projects/vehicle-helmet-2.jpg"],
+    images: [],
     accent: "cyan",
   },
   {
@@ -224,7 +230,7 @@ export const projects: Project[] = [
     ],
     contribution: "Developed an AI-based motion-detection system and its video-analysis pipeline.",
     stack: ["AI", "Video analysis", "Feature extraction", "Classification"],
-    images: ["/images/projects/motion-detection-1.jpg", "/images/projects/motion-detection-2.jpg"],
+    images: [],
     accent: "violet",
   },
   {
@@ -246,7 +252,7 @@ export const projects: Project[] = [
     contribution:
       "Developing research focused on using AI to assist medical-report and radiology-image interpretation.",
     stack: ["Agentic AI", "Multimodal AI", "Medical AI", "LLMs", "RAG"],
-    images: ["/images/projects/medical-ai-1.jpg", "/images/projects/medical-ai-2.jpg"],
+    images: ["/images/projects/medical-ai-research-cover.jpg"],
     accent: "amber",
   },
   // Additional projects documented in the updated November 2026 CV.
@@ -447,6 +453,29 @@ export const projects: Project[] = [
     images: [],
     accent: "cyan",
   },
+  {
+    id: "smart-fire-fighting-robot",
+    code: "AI-19",
+    title: "Smart Fire-Fighting Robot (ESP32)",
+    tagline: "Autonomous flame detection & response · Embedded IoT prototype",
+    problem:
+      "A mobile fire-fighting prototype must detect a flame, avoid obstacles, and safely control its extinguishing mechanism.",
+    architecture: [
+      "ESP32 controller connected to three flame sensors",
+      "Ultrasonic obstacle detection and dual-motor drive",
+      "Relay-controlled pump with servo-based targeting",
+    ],
+    features: [
+      "Automatic patrol, flame investigation and approach modes",
+      "Remote manual control through web interface and Blynk",
+      "Emergency stop, speed control and obstacle-safety logic",
+    ],
+    contribution:
+      "Developed the ESP32 control logic and integrated sensing, navigation, manual control and targeted extinguishing.",
+    stack: ["ESP32", "Arduino IDE", "IoT", "Flame sensors", "Ultrasonic", "Blynk", "Web UI"],
+    images: [],
+    accent: "amber",
+  },
 ];
 
 export const skillDomains = [
@@ -608,28 +637,88 @@ export const internships = [
 
 export const certificates: Certificate[] = [
   {
+    id: "google-ai-essentials",
+    title: "Google AI Essentials",
+    issuer: "Google · Coursera",
+    category: "AI",
+    description:
+      "Google AI Essentials course completion recorded in the archived July 2026 CV and supported by the original certificate.",
+    date: "07 Aug 2024",
+    credentialId: "See original scan",
+    skills: ["Generative AI", "Responsible AI", "Prompt engineering"],
+    image: "/images/certificates/google-ai-essentials.jpg",
+  },
+  {
+    id: "opswat-cip",
+    title: "Introduction to Critical Infrastructure Protection",
+    issuer: "OPSWAT Academy",
+    category: "Security",
+    description:
+      "Completed the Introduction to CIP program. The certificate records an expiry date in March 2026.",
+    date: "17 Mar 2025",
+    credentialId: "nniB8cipFQ",
+    skills: ["Critical infrastructure", "Cybersecurity", "Security awareness"],
+    image: "/images/certificates/opswat-cip.jpg",
+  },
+  {
+    id: "arch-generative-ai",
+    title: "Certificate of Completion — Generative AI",
+    issuer: "Arch Technologies",
+    category: "AI",
+    description:
+      "Generative AI training recorded in the archived CV; a matching Arch Technologies completion certificate is attached.",
+    date: "01 Jul 2024 (CV)",
+    credentialId: "ARCH-2504-0409",
+    skills: ["Generative AI", "AI training", "Software development"],
+    image: "/images/certificates/arch-generative-ai.jpg",
+  },
+  {
+    id: "technik-ai-ml-internship",
+    title: "AI & Machine Learning Internship Certificate",
+    issuer: "Technik Nest",
+    category: "Internship",
+    description:
+      "Certificate for a six-week AI/ML internship covering algorithms, preprocessing and model training, June–July 2025.",
+    date: "04 Aug 2025",
+    credentialId: "TN/IN01/AM/003",
+    skills: ["Machine Learning", "Data preprocessing", "Model training"],
+    image: "/images/certificates/technik-nest-internship.png",
+  },
+  {
     id: "kaswa-software-delivery",
     title: "Company-Wide Software Solution Delivery",
     issuer: "Kaswa Marketing & Business Developers",
     category: "Project Recognition",
     description:
-      "Awarded for successfully designing and delivering a company-wide software solution.",
+      "Software-delivery recognition described in the latest CV; a separate certificate scan has not been recovered.",
     date: "2025",
     credentialId: "Not listed",
-    skills: ["Software development", "AI solution delivery", "Independent project work"],
-    image: "/images/certificates/kaswa-software-delivery.jpg",
+    skills: ["AI software delivery", "Project development", "Deployment"],
+    image: "",
   },
   {
     id: "technik-nest-project-completion",
-    title: "Enterprise Software Development – Project Completion Certificate",
+    title: "Enterprise Software Development — Project Recognition",
     issuer: "Technik Nest",
-    category: "Project Certificate",
+    category: "Project Recognition",
     description:
-      "Documents enterprise software-development project work during an international internship.",
-    date: "Not listed",
-    credentialId: "TN/IN01/AM/003",
-    skills: ["Enterprise software development", "Software projects", "Practical experience"],
-    image: "/images/certificates/technik-nest-enterprise-software.jpg",
+      "A project-completion entry documented in the latest CV. The recovered Technik Nest image is an internship certificate, not a separate project document.",
+    date: "Not separately recorded",
+    credentialId: "Not separately verified",
+    skills: ["Software projects", "AI development", "Internship work"],
+    image: "",
+  },
+  {
+    id: "pak-austria-ai-ml",
+    title: "Artificial Intelligence / Machine Learning Training",
+    issuer: "Pak-Austria Fachhochschule",
+    category: "Training",
+    description:
+      "Training entry listed in the archived July 2026 CV. Its old attachment points to a Technik Nest certificate, so no matching scan is available yet.",
+    date: "20 Jul 2025 (CV)",
+    credentialId: "Scan not found",
+    skills: ["Artificial Intelligence", "Machine Learning", "Applied sciences"],
+    image: "",
   },
 ];
 
@@ -644,6 +733,14 @@ export const education = [
 ];
 
 export const achievements = {
+  participation: [
+    {
+      title: "University of Haripur — Final Year Project Exhibition",
+      detail:
+        "Presented the University Chatbot AI-powered documentation assistant project at the Department of Information Technology exhibition. The original exhibition poster is attached.",
+      evidence: "files/projects/uoh-assistant-poster.pdf",
+    },
+  ],
   awards: [
     {
       title: "UOH AI Assistant deployed",

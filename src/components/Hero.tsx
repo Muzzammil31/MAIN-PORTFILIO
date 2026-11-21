@@ -172,9 +172,21 @@ export function Hero() {
                 <div className="hero-orbit hero-orbit-outer" />
                 <div className="hero-orbit hero-orbit-middle" />
                 <div className="hero-orbit hero-orbit-inner" />
-                <div className="hero-monogram relative z-10 grid h-36 w-36 place-items-center rounded-[2rem] font-display text-6xl font-bold tracking-tighter">
-                  MH
-                  <span className="absolute -bottom-3 rounded-full border border-primary/25 bg-background px-4 py-1 font-mono text-[10px] font-medium uppercase tracking-[0.22em] text-primary">
+                <div className="hero-portrait-shell group relative z-10">
+                  <span
+                    className="hero-portrait-rim pointer-events-none absolute -inset-2 rounded-[2rem]"
+                    aria-hidden="true"
+                  />
+                  <img
+                    src={`${import.meta.env.BASE_URL}images/muzammil-profile.jpg`}
+                    alt="Portrait of Muzammil Hussain"
+                    className="hero-profile-photo relative z-10 h-[240px] w-[240px] rounded-[1.65rem] object-cover sm:h-[258px] sm:w-[258px]"
+                    width={258}
+                    height={258}
+                    loading="eager"
+                    decoding="async"
+                  />
+                  <span className="hero-portrait-tag absolute -bottom-4 left-1/2 z-20 -translate-x-1/2 whitespace-nowrap rounded-full border border-white/20 bg-[#112d50] px-5 py-2 font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#e1f1ff] shadow-xl">
                     AI Engineer
                   </span>
                 </div>

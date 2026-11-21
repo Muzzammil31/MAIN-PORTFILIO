@@ -9,6 +9,7 @@ import {
   Search,
   Bot,
   MessageCircle,
+  FileText,
 } from "lucide-react";
 import { askPortfolioAssistant } from "@/lib/portfolioAssistant";
 import { projects, type Project } from "@/data/portfolio";
@@ -124,7 +125,7 @@ export function Projects() {
                     alt={p.title}
                     label="Add project image"
                     className="h-full w-full"
-                    imgClassName="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    imgClassName="h-full w-full bg-[#123157] object-contain transition-transform duration-700 group-hover:scale-105"
                   />
                   <span className="absolute left-3 top-3 rounded-full border border-border bg-background/70 px-2.5 py-1 font-mono text-[10px] tracking-widest text-primary backdrop-blur">
                     {p.code}
@@ -139,6 +140,11 @@ export function Projects() {
                   )}
                   <h3 className="font-display text-xl font-semibold">{p.title}</h3>
                   <p className="mt-1.5 text-sm text-muted-foreground">{p.tagline}</p>
+                  {p.report && (
+                    <span className="mt-2 inline-flex items-center gap-1.5 text-[11px] font-medium text-primary">
+                      <FileText className="h-3.5 w-3.5" /> Original project poster available
+                    </span>
+                  )}
 
                   <div className="mt-4 flex flex-wrap gap-1.5">
                     {p.stack.slice(0, 4).map((s) => (
@@ -203,7 +209,7 @@ export function Projects() {
                 alt={active.title}
                 label="Add project image"
                 className="h-full w-full"
-                imgClassName="h-full w-full object-cover"
+                imgClassName="h-full w-full bg-[#123157] object-contain"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
               <div className="absolute bottom-4 left-5">
@@ -216,6 +222,17 @@ export function Projects() {
             </div>
 
             <div className="grid gap-6 p-6 md:grid-cols-2">
+              {active.report && (
+                <a
+                  href={`${import.meta.env.BASE_URL}${active.report}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="md:col-span-2 inline-flex w-fit items-center gap-2 rounded-xl border border-primary/25 bg-primary/10 px-4 py-2.5 text-sm font-semibold text-primary transition hover:bg-primary/15"
+                >
+                  <FileText className="h-4 w-4" /> View original project poster (PDF){" "}
+                  <ArrowUpRight className="h-4 w-4" />
+                </a>
+              )}
               <Block icon={<Target className="h-4 w-4" />} title="Problem">
                 <p className="text-sm text-muted-foreground">{active.problem}</p>
               </Block>
@@ -245,7 +262,9 @@ export function Projects() {
 
               <div className="md:col-span-2">
                 <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.24em] text-muted-foreground">
-                  Gallery — click to enlarge
+                  {active.images.length > 0
+                    ? "Gallery — click to enlarge"
+                    : "Project documented · no screenshot available"}
                 </p>
                 <div className="grid gap-3 sm:grid-cols-2">
                   {active.images.map((img, i) => (
