@@ -49,6 +49,18 @@ jobs:
             echo 'Outdated contact email detected in compiled site' >&2
             exit 1
           fi
+      - name: Enforce free GitHub Pages URL (remove stale custom domains)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          printf '{"cname":null}' | gh api -X PUT "repos/${GITHUB_REPOSITORY}/pages" --input - > /dev/null
+          domain="$(gh api "repos/${GITHUB_REPOSITORY}/pages" --jq 'if .cname == null then "none" else .cname end')"
+          if [ "$domain" != "none" ]; then
+            echo "Unexpected custom domain remains configured: $domain" >&2
+            exit 1
+          fi
+          echo "GitHub Pages custom domain cleared; using free github.io URL."
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
       - name: Upload static site
