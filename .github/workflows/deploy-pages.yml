@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
     steps:
       - name: Checkout source
         uses: actions/checkout@v4
@@ -49,18 +49,16 @@ jobs:
             echo 'Outdated contact email detected in compiled site' >&2
             exit 1
           fi
-      - name: Enforce free GitHub Pages URL (remove stale custom domains)
-        env:
-          GH_TOKEN: ${{ github.token }}
+      - name: Check for obsolete custom-domain settings in the site
         shell: bash
         run: |
-          printf '{"cname":null}' | gh api -X PUT "repos/${GITHUB_REPOSITORY}/pages" --input - > /dev/null
-          domain="$(gh api "repos/${GITHUB_REPOSITORY}/pages" --jq 'if .cname == null then "none" else .cname end')"
-          if [ "$domain" != "none" ]; then
-            echo "Unexpected custom domain remains configured: $domain" >&2
+          test ! -e public/CNAME
+          test ! -e dist/CNAME
+          if grep -Rqs 'portfolio.muzammilhussain.com' dist; then
+            echo "An obsolete custom domain was found in the published site." >&2
             exit 1
           fi
-          echo "GitHub Pages custom domain cleared; using free github.io URL."
+          echo "No CNAME file or obsolete custom-domain redirect is present."
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
       - name: Upload static site
