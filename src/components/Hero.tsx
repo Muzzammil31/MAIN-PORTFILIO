@@ -75,9 +75,6 @@ export function Hero() {
               <span className="eyebrow-pill">
                 <span className="status-dot" /> Available for opportunities
               </span>
-              <span className="text-xs font-medium tracking-wide text-muted-foreground">
-                Red Fort · University of Haripur · Kaswa
-              </span>
             </div>
           </Reveal>
 
@@ -109,7 +106,7 @@ export function Hero() {
               <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">
                 2026 / Recent work
               </span>
-              <span className="text-sm font-semibold text-foreground">AI Engineer at Red Fort</span>
+              <span className="text-sm font-semibold text-foreground">AI Engineer</span>
               <span className="hidden text-muted-foreground sm:inline">•</span>
               <span className="text-xs text-muted-foreground">
                 AI automation · LLMs · Video systems

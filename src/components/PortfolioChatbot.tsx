@@ -42,7 +42,7 @@ export function PortfolioChatbot() {
     {
       id: 0,
       role: "assistant",
-      text: "Hi there! I'm Muzammil's portfolio assistant. Ask me about AI projects, Red Fort experience, skills, the CV, or ways to get in touch.",
+      text: "Hi there! I'm Muzammil's portfolio assistant. Ask me about projects, experience, skills, the CV, or ways to get in touch.",
       suggestions: defaultPrompts.slice(0, 4),
     },
   ]);

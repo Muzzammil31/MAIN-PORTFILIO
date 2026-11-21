@@ -29,7 +29,7 @@ export function askPortfolioAssistant(question = "") {
 
 const prompts = {
   projects: "Tell me about your best AI projects",
-  redfort: "What did you build at Red Fort?",
+  experience: "Tell me about your professional experience",
   uoh: "Tell me about the UOH AI Assistant",
   skills: "What AI skills and technologies do you use?",
   contact: "How can I contact you?",
@@ -143,7 +143,7 @@ const sections = {
 const answer = (
   text: string,
   links: AssistantLink[] = [],
-  suggestions: string[] = [prompts.uoh, prompts.redfort, prompts.contact],
+  suggestions: string[] = [prompts.uoh, prompts.experience, prompts.contact],
   projectId?: string,
 ): AssistantAnswer => ({ text, links, suggestions, ...(projectId ? { projectId } : {}) });
 
@@ -234,14 +234,14 @@ export function respondToPortfolioQuestion(
     return answer(
       "Use the CV link below to view the current CV. It covers AI engineering experience, internships, education, and projects.",
       [{ label: "Download updated CV", href: `${import.meta.env.BASE_URL}resume.pdf` }],
-      [prompts.redfort, prompts.skills, prompts.contact],
+      [prompts.experience, prompts.skills, prompts.contact],
     );
   }
   if (/\b(certif\w*|credential\w*|awards?|achievements?)\b/.test(q)) {
     return answer(
       `The portfolio documents ${certificates.length} certificates: ${certificates.map((c) => `${c.title} (${c.issuer})`).join("; ")}. The achievements section also highlights ${achievements.awards.map((a) => a.title).join(" and ")}.`,
       [{ label: "View certificates", href: sections.certificates }],
-      [prompts.projects, prompts.redfort],
+      [prompts.projects, prompts.experience],
     );
   }
   if (
@@ -261,7 +261,7 @@ export function respondToPortfolioQuestion(
     return answer(
       `The portfolio lists ${internships.length} internships:\n\n${internships.map((job) => `• ${job.org} — ${job.role} (${job.year})`).join("\n")}`,
       [{ label: "See experience", href: sections.experience }],
-      [prompts.redfort, "Tell me about Kaswa software"],
+      [prompts.experience, "Tell me about Kaswa software"],
     );
   }
   const workIntent =
@@ -286,7 +286,7 @@ export function respondToPortfolioQuestion(
     return answer(
       `Professional work includes:\n\n${experience.map((job) => `• ${job.role} — ${job.org} (${job.period})`).join("\n")}\n\nThe portfolio also lists ${internships.length} internships.`,
       [{ label: "Experience and internships", href: sections.experience }],
-      [prompts.redfort, "What did you build for Kaswa?"],
+      [prompts.projects, "What did you build for Kaswa?"],
     );
   }
   if (
@@ -298,7 +298,7 @@ export function respondToPortfolioQuestion(
     return answer(
       `Core skills include:\n\n${skillDomains.map((domain) => `• ${domain.name}: ${domain.items.slice(0, 6).join(", ")}`).join("\n")}\n\nRoles of interest: ${openRoles.slice(0, 4).join(", ")}.`,
       [{ label: "View skills", href: sections.skills }],
-      ["Which projects use RAG?", prompts.redfort, prompts.contact],
+      ["Which projects use RAG?", prompts.experience, prompts.contact],
     );
   }
   if (
@@ -315,7 +315,7 @@ export function respondToPortfolioQuestion(
           "\n",
         )}\n\nYou can explore every project, including architecture, features, contributions and technologies, in the Projects section.`,
       [{ label: "Browse all projects", href: sections.projects }],
-      [prompts.redfort, prompts.uoh, "Which projects use computer vision?"],
+      [prompts.experience, prompts.uoh, "Which projects use computer vision?"],
     );
   }
 
@@ -403,16 +403,16 @@ export function respondToPortfolioQuestion(
     return answer(
       `${profile.name} is an ${profile.role} based in ${profile.location}. ${profile.summary} ${profile.summary2}`,
       [{ label: "Read about Muzammil", href: sections.about }],
-      [prompts.projects, prompts.redfort, prompts.contact],
+      [prompts.projects, prompts.experience, prompts.contact],
     );
   }
   return answer(
-    "I couldn't find a precise match in the published portfolio information. I can help with all listed AI projects, Red Fort and Kaswa experience, internships, technical skills, certificates, education, the CV and contact details. Try asking about a specific project or topic.",
+    "I couldn't find a precise match in the published portfolio information. Try asking about a project, professional experience, internships, technical skills, certificates, education, the CV, or contact details.",
     [
       { label: "Browse projects", href: sections.projects },
       { label: "Contact Muzammil", href: sections.contact },
     ],
-    [prompts.projects, prompts.redfort, prompts.skills, prompts.contact],
+    [prompts.projects, prompts.experience, prompts.skills, prompts.contact],
   );
 }
 
