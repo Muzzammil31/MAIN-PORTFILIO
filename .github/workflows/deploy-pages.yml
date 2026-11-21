@@ -31,10 +31,24 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
+      - name: Lint source
+        run: npm run lint
       - name: Type-check
         run: npm run typecheck
       - name: Build static site
         run: npm run build
+      - name: Smoke-test portfolio, chatbot and current CV
+        shell: bash
+        run: |
+          test -s dist/index.html
+          test -s dist/resume.pdf
+          test -s dist/favicon.svg
+          grep -Rqs 'Portfolio Assistant' dist/assets
+          grep -Rqs 'muzzammilh26@gmail.com' dist/assets
+          if grep -Rqs 'muzzammilhus26@gmail.com' dist/assets; then
+            echo 'Outdated contact email detected in compiled site' >&2
+            exit 1
+          fi
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
       - name: Upload static site

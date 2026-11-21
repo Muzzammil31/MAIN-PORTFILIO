@@ -1,5 +1,16 @@
 import { useState } from "react";
-import { ArrowUpRight, X, Layers, Target, Sparkles, User, Search } from "lucide-react";
+import {
+  ArrowUpRight,
+  X,
+  Layers,
+  Target,
+  Sparkles,
+  User,
+  Search,
+  Bot,
+  MessageCircle,
+} from "lucide-react";
+import { askPortfolioAssistant } from "@/lib/portfolioAssistant";
 import { projects, type Project } from "@/data/portfolio";
 import { Reveal, SmartImage, Thumb, Lightbox } from "@/components/Media";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -45,7 +56,28 @@ export function Projects() {
           subtitle="From deployed university systems and business software to AI research and experimental builds. Explore the architecture and my contribution."
         />
 
-        <div className="mt-10 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <div className="mt-9 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-[#d5e2f2] bg-gradient-to-r from-[#f2f7ff] to-white px-5 py-4 shadow-sm">
+          <div className="flex min-w-0 items-center gap-3">
+            <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#16385f] text-[#d4e8ff]">
+              <Bot className="h-5 w-5" />
+            </span>
+            <div>
+              <p className="text-sm font-semibold text-foreground">Meet the Project Assistant</p>
+              <p className="mt-0.5 text-xs text-muted-foreground">
+                Ask about architectures, tech stacks, features and my contribution.
+              </p>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={() => askPortfolioAssistant("Help me explore your best AI projects")}
+            className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-[#1755ba] px-4 py-2.5 text-xs font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#103f92]"
+          >
+            <MessageCircle className="h-4 w-4" /> Ask about projects
+          </button>
+        </div>
+
+        <div className="mt-8 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex flex-wrap gap-2" role="group" aria-label="Filter projects">
             {categories.map((category) => (
               <button
@@ -124,12 +156,23 @@ export function Projects() {
                     )}
                   </div>
 
-                  <button
-                    onClick={() => setOpenId(p.id)}
-                    className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-foreground"
-                  >
-                    Inspect system <ArrowUpRight className="h-4 w-4" />
-                  </button>
+                  <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
+                    <button
+                      type="button"
+                      onClick={() => setOpenId(p.id)}
+                      className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-foreground"
+                    >
+                      Inspect system <ArrowUpRight className="h-4 w-4" />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => askPortfolioAssistant(`Tell me about ${p.title}`)}
+                      className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/5 px-3 py-1.5 text-xs font-semibold text-primary transition-colors hover:border-primary/50 hover:bg-primary/10"
+                      aria-label={`Ask the assistant about ${p.title}`}
+                    >
+                      <Bot className="h-3.5 w-3.5" /> Ask
+                    </button>
+                  </div>
                 </div>
               </article>
             </Reveal>

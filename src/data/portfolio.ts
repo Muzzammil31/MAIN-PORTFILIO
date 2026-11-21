@@ -36,7 +36,7 @@ export const profile = {
   university: "University of Haripur",
   location: "Wah Cantt, Pakistan",
   focus: "Production AI automation, LLM/RAG systems, agentic workflows and computer vision",
-  email: "muzzammilhus26@gmail.com",
+  email: "muzzammilh26@gmail.com",
   linkedin: "https://www.linkedin.com/in/muzammil-hussain-864752246",
   github: "https://github.com/Muzzammil31",
   fiverr: "https://www.fiverr.com/muzamil_47",

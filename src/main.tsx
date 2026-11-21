@@ -14,6 +14,7 @@ import {
   Footer,
 } from "@/components/Sections";
 import { Toaster } from "@/components/ui/sonner";
+import { PortfolioChatbot } from "@/components/PortfolioChatbot";
 import "@/styles.css";
 
 export function Portfolio() {
@@ -30,6 +31,7 @@ export function Portfolio() {
       <Achievements />
       <Contact />
       <Footer />
+      <PortfolioChatbot />
       <Toaster position="bottom-center" />
     </main>
   );
