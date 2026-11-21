@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { profile, stats } from "@/data/portfolio";
 import { Reveal } from "@/components/Media";
+import { useDashboardPortfolio } from "@/lib/dashboardPortfolio";
 
 const roles = [
   "AI Engineer",
@@ -63,6 +64,7 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
 }
 
 export function Hero() {
+  const synced = useDashboardPortfolio();
   return (
     <section id="home" className="hero-shell relative isolate overflow-hidden pb-14 pt-32 sm:pt-40">
       <div className="hero-ambient pointer-events-none absolute inset-0" aria-hidden="true" />
@@ -98,7 +100,7 @@ export function Hero() {
 
           <Reveal delay={130}>
             <p className="mt-6 max-w-xl text-base leading-8 text-muted-foreground sm:text-lg">
-              {profile.summary2}
+              {synced.introduction || profile.summary2}
             </p>
           </Reveal>
 
@@ -124,11 +126,11 @@ export function Hero() {
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
               <a
-                href="resume.pdf"
-                download="Muzammil_Hussain_CV.pdf"
+                href={synced.cvHref}
+                download={synced.cvDownload}
                 className="hero-secondary-cta inline-flex items-center gap-2 rounded-xl px-5 py-3.5 text-sm font-semibold transition-colors hover:bg-surface-2"
               >
-                <Download className="h-4 w-4" /> Download CV
+                <Download className="h-4 w-4" /> {synced.cvLabel}
               </a>
               <a
                 href={`mailto:${profile.email}`}

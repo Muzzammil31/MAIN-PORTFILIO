@@ -12,6 +12,7 @@ import {
   FileText,
 } from "lucide-react";
 import { askPortfolioAssistant } from "@/lib/portfolioAssistant";
+import { useDashboardPortfolio } from "@/lib/dashboardPortfolio";
 import { projects, type Project } from "@/data/portfolio";
 import { Reveal, SmartImage, Thumb, Lightbox } from "@/components/Media";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -22,6 +23,57 @@ const accentClass: Record<Project["accent"], string> = {
   amber: "from-amber/25",
   lime: "from-lime/25",
 };
+
+function SharedPortfolio() {
+  const shared = useDashboardPortfolio();
+  if (!shared.portfolioUrl) return null;
+  return (
+    <aside aria-labelledby="shared-portfolio-title" className="panel mt-8 rounded-2xl p-5">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <h3 id="shared-portfolio-title" className="font-display text-lg font-bold">
+          Portfolio highlights
+        </h3>
+        <a
+          href={shared.portfolioUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary"
+        >
+          Open portfolio and media <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+        </a>
+      </div>
+      {shared.projects.length > 0 && (
+        <ul
+          className="mt-4 grid gap-3 md:grid-cols-2 lg:grid-cols-3"
+          aria-label="Selected projects"
+        >
+          {shared.projects.map((project, index) => (
+            <li key={`${project.name}-${index}`} className="rounded-xl border border-border p-3">
+              <p className="text-sm font-semibold text-foreground">{project.name}</p>
+              <p className="mt-1 text-xs text-muted-foreground">{project.category}</p>
+            </li>
+          ))}
+        </ul>
+      )}
+      {shared.links.length > 0 && (
+        <ul className="mt-4 flex flex-wrap gap-2" aria-label="Selected links">
+          {shared.links.map((link, index) => (
+            <li key={`${link.url}-${index}`}>
+              <a
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-lg border border-border px-3 py-2 text-sm text-primary"
+              >
+                {link.label} <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </aside>
+  );
+}
 
 export function Projects() {
   const [openId, setOpenId] = useState<string | null>(null);
@@ -56,6 +108,8 @@ export function Projects() {
           title="WORK & PROJECTS"
           subtitle="From deployed university systems and business software to AI research and experimental builds. Explore the architecture and my contribution."
         />
+
+        <SharedPortfolio />
 
         <div className="mt-9 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-[#d5e2f2] bg-gradient-to-r from-[#f2f7ff] to-white px-5 py-4 shadow-sm">
           <div className="flex min-w-0 items-center gap-3">

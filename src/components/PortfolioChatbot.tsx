@@ -11,6 +11,11 @@ import {
 } from "lucide-react";
 import { profile } from "@/data/portfolio";
 import {
+  bundledCvHref,
+  getDashboardPortfolio,
+  useDashboardPortfolio,
+} from "@/lib/dashboardPortfolio";
+import {
   askPortfolioAssistant,
   CHAT_EVENT,
   defaultPrompts,
@@ -27,6 +32,10 @@ type Message = {
 };
 
 export function PortfolioChatbot() {
+  const synced = useDashboardPortfolio();
+  const openingPrompts = [
+    ...new Set([...synced.faq.map((entry) => entry.question), ...defaultPrompts]),
+  ];
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Message[]>([
@@ -46,7 +55,11 @@ export function PortfolioChatbot() {
     const question = rawQuestion.trim().slice(0, 450);
     setOpen(true);
     if (!question) return;
-    const response = respondToPortfolioQuestion(question, lastProject.current);
+    const response = respondToPortfolioQuestion(
+      question,
+      lastProject.current,
+      getDashboardPortfolio().faq,
+    );
     if (response.projectId) lastProject.current = response.projectId;
     const userMessage: Message = {
       id: conversationId.current++,
@@ -163,24 +176,22 @@ export function PortfolioChatbot() {
                   {message.links && message.links.length > 0 && (
                     <div className="mt-2 flex flex-wrap gap-2">
                       {message.links.map((link) => {
-                        const external = /^(https?:|mailto:)/.test(link.href);
+                        const isCv = link.href === bundledCvHref;
+                        const href = isCv ? synced.cvHref : link.href;
+                        const external = /^(https?:|mailto:)/.test(href);
                         return (
                           <a
                             key={link.href + link.label}
-                            href={link.href}
-                            target={link.href.startsWith("http") ? "_blank" : undefined}
-                            rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                            download={
-                              link.href.endsWith("resume.pdf")
-                                ? "Muzammil_Hussain_CV.pdf"
-                                : undefined
-                            }
+                            href={href}
+                            target={href.startsWith("http") ? "_blank" : undefined}
+                            rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                            download={isCv ? synced.cvDownload : undefined}
                             onClick={() => {
                               if (!external) setOpen(false);
                             }}
                             className="inline-flex items-center gap-1.5 rounded-lg border border-[#c9d9ee] bg-[#eaf1fb] px-2.5 py-1.5 text-[11px] font-semibold text-[#194e90] transition hover:bg-[#dce9fc]"
                           >
-                            {link.label} <ArrowRight className="h-3 w-3" />
+                            {isCv ? synced.cvLabel : link.label} <ArrowRight className="h-3 w-3" />
                           </a>
                         );
                       })}
@@ -188,16 +199,18 @@ export function PortfolioChatbot() {
                   )}
                   {message.suggestions && message.id === messages[messages.length - 1]?.id && (
                     <div className="mt-3 flex flex-wrap gap-1.5">
-                      {message.suggestions.slice(0, 4).map((prompt) => (
-                        <button
-                          key={prompt}
-                          type="button"
-                          onClick={() => sendQuestion(prompt)}
-                          className="rounded-full border border-[#d3dff0] bg-white px-3 py-2 text-left text-[11px] font-medium leading-tight text-[#285286] transition hover:border-[#8aaedb] hover:bg-[#edf4ff]"
-                        >
-                          {prompt}
-                        </button>
-                      ))}
+                      {(message.id === 0 ? openingPrompts : message.suggestions)
+                        .slice(0, 4)
+                        .map((prompt) => (
+                          <button
+                            key={prompt}
+                            type="button"
+                            onClick={() => sendQuestion(prompt)}
+                            className="rounded-full border border-[#d3dff0] bg-white px-3 py-2 text-left text-[11px] font-medium leading-tight text-[#285286] transition hover:border-[#8aaedb] hover:bg-[#edf4ff]"
+                          >
+                            {prompt}
+                          </button>
+                        ))}
                     </div>
                   )}
                 </div>

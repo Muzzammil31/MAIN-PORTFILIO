@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, X, Sparkles } from "lucide-react";
+import { useDashboardPortfolio } from "@/lib/dashboardPortfolio";
 
 const links = [
   { id: "home", label: "Home" },
@@ -15,6 +16,7 @@ const links = [
 ];
 
 export function Nav() {
+  const synced = useDashboardPortfolio();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("home");
@@ -109,11 +111,11 @@ export function Nav() {
 
           <div className="flex items-center gap-2">
             <a
-              href="resume.pdf"
-              download="Muzammil_Hussain_CV.pdf"
+              href={synced.cvHref}
+              download={synced.cvDownload}
               className="hidden items-center gap-2 rounded-xl border border-border bg-surface px-3 py-2 text-xs font-semibold text-foreground whitespace-nowrap transition-colors hover:bg-surface-2 sm:inline-flex"
             >
-              Download CV
+              {synced.cvLabel}
             </a>
             <a
               href="#contact"
@@ -145,12 +147,12 @@ export function Nav() {
                 </a>
               ))}
               <a
-                href="resume.pdf"
-                download="Muzammil_Hussain_CV.pdf"
+                href={synced.cvHref}
+                download={synced.cvDownload}
                 onClick={() => setOpen(false)}
                 className="col-span-2 rounded-xl border border-primary/20 bg-primary/10 px-3 py-2.5 text-center text-sm font-semibold text-primary"
               >
-                Download updated CV
+                {synced.cvLabel}
               </a>
             </div>
           </div>

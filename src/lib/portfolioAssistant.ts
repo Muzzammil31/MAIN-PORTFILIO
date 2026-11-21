@@ -10,6 +10,7 @@ import {
   skillDomains,
   type Project,
 } from "@/data/portfolio";
+import type { PublicAnswer } from "@/lib/dashboardPortfolio";
 
 export type AssistantLink = { label: string; href: string };
 export type AssistantAnswer = {
@@ -189,8 +190,14 @@ function projectDetails(project: Project, focus = ""): AssistantAnswer {
 export function respondToPortfolioQuestion(
   input: string,
   activeProjectId?: string,
+  publicAnswers: PublicAnswer[] = [],
 ): AssistantAnswer {
   const question = input.trim().slice(0, 450);
+  const normalizedQuestion = comparableQuestion(question);
+  const published = publicAnswers.find(
+    (entry) => comparableQuestion(entry.question) === normalizedQuestion,
+  );
+  if (published) return answer(published.answer);
   const q = normalize(question);
   if (!q || /^(hi|hello|hey|assalam|salam|aoa|help|start|hello there)$/.test(q)) {
     return answer(
@@ -225,7 +232,7 @@ export function respondToPortfolioQuestion(
   }
   if (/\b(cv|resume|curriculum|download|pdf)\b/.test(q) && !/summari[sz]/.test(q)) {
     return answer(
-      "The updated four-page CV is available directly from this website. It covers AI engineering experience, internships, education, projects and certificates. Use Download CV to get the PDF.",
+      "Use the CV link below to view the current CV. It covers AI engineering experience, internships, education, and projects.",
       [{ label: "Download updated CV", href: `${import.meta.env.BASE_URL}resume.pdf` }],
       [prompts.redfort, prompts.skills, prompts.contact],
     );
@@ -407,4 +414,12 @@ export function respondToPortfolioQuestion(
     ],
     [prompts.projects, prompts.redfort, prompts.skills, prompts.contact],
   );
+}
+
+function comparableQuestion(value: string) {
+  return value
+    .normalize("NFKC")
+    .toLowerCase()
+    .replace(/[\p{P}\p{Z}\s]+/gu, " ")
+    .trim();
 }
