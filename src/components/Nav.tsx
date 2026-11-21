@@ -111,6 +111,7 @@ export function Nav() {
 
           <div className="flex items-center gap-2">
             <a
+              data-dashboard-cv
               href={synced.cvHref}
               download={synced.cvDownload}
               className="hidden items-center gap-2 rounded-xl border border-border bg-surface px-3 py-2 text-xs font-semibold text-foreground whitespace-nowrap transition-colors hover:bg-surface-2 sm:inline-flex"
@@ -147,6 +148,7 @@ export function Nav() {
                 </a>
               ))}
               <a
+                data-dashboard-cv
                 href={synced.cvHref}
                 download={synced.cvDownload}
                 onClick={() => setOpen(false)}

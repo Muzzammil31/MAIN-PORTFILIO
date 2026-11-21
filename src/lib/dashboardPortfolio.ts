@@ -7,6 +7,19 @@ export const bundledCvHref = `${import.meta.env.BASE_URL}resume.pdf`;
 
 export type PublicAnswer = { question: string; answer: string };
 
+// The portable public/portfolio-sync.js bridge is the primary feed connection.
+// Retain a direct-fetch fallback if that script is omitted on another static host.
+type BridgeState = { status: "ready" | "unavailable"; data: unknown; checkedAt: number };
+
+declare global {
+  interface Window {
+    PortfolioControlSync?: {
+      getLatest: () => BridgeState;
+      refresh: (force?: boolean) => Promise<BridgeState>;
+    };
+  }
+}
+
 type PortfolioSync = {
   cvHref: string;
   cvLabel: string;
@@ -103,7 +116,20 @@ function validatedFeed(value: unknown): PortfolioSync {
   };
 }
 
+function applyBridgeState(state: BridgeState | undefined) {
+  update(state?.status === "ready" ? validatedFeed(state.data) : fallback);
+}
+
+function onBridgeUpdate(event: Event) {
+  const { detail } = event as CustomEvent<BridgeState>;
+  applyBridgeState(detail);
+}
+
 async function refresh() {
+  if (window.PortfolioControlSync) {
+    await window.PortfolioControlSync.refresh();
+    return;
+  }
   if (document.hidden || pending || Date.now() - previousRefresh < 10000) return;
   pending = true;
   previousRefresh = Date.now();
@@ -130,13 +156,20 @@ function refreshOnReturn() {
 function subscribe(listener: () => void) {
   listeners.add(listener);
   if (listeners.size === 1) {
-    void refresh();
-    timer = window.setInterval(refreshOnReturn, 60000);
-    document.addEventListener("visibilitychange", refreshOnReturn);
+    window.addEventListener("portfolio-sync:update", onBridgeUpdate);
+    if (window.PortfolioControlSync) {
+      applyBridgeState(window.PortfolioControlSync.getLatest());
+      void window.PortfolioControlSync.refresh();
+    } else {
+      void refresh();
+      timer = window.setInterval(refreshOnReturn, 60000);
+      document.addEventListener("visibilitychange", refreshOnReturn);
+    }
   }
   return () => {
     listeners.delete(listener);
     if (listeners.size === 0) {
+      window.removeEventListener("portfolio-sync:update", onBridgeUpdate);
       window.clearInterval(timer);
       document.removeEventListener("visibilitychange", refreshOnReturn);
     }

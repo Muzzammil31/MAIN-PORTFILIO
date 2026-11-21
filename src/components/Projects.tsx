@@ -26,21 +26,24 @@ const accentClass: Record<Project["accent"], string> = {
 
 function SharedPortfolio() {
   const shared = useDashboardPortfolio();
-  if (!shared.portfolioUrl) return null;
+  if (!shared.portfolioUrl && shared.projects.length === 0 && shared.links.length === 0)
+    return null;
   return (
     <aside aria-labelledby="shared-portfolio-title" className="panel mt-8 rounded-2xl p-5">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h3 id="shared-portfolio-title" className="font-display text-lg font-bold">
           Portfolio highlights
         </h3>
-        <a
-          href={shared.portfolioUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary"
-        >
-          Open portfolio and media <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-        </a>
+        {shared.portfolioUrl && (
+          <a
+            href={shared.portfolioUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary"
+          >
+            Open portfolio and media <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+          </a>
+        )}
       </div>
       {shared.projects.length > 0 && (
         <ul

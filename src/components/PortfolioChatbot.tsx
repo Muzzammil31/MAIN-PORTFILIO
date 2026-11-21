@@ -182,6 +182,7 @@ export function PortfolioChatbot() {
                         return (
                           <a
                             key={link.href + link.label}
+                            data-dashboard-cv={isCv ? true : undefined}
                             href={href}
                             target={href.startsWith("http") ? "_blank" : undefined}
                             rel={href.startsWith("http") ? "noopener noreferrer" : undefined}

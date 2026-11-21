@@ -29,6 +29,12 @@ In **Settings → Pages → Build and deployment**, select **GitHub Actions** as
 
 Vite uses a portable relative asset base (`./`), so CSS, JS, favicon and CV links work correctly on the free GitHub Pages URL without a custom domain. The portfolio is a static single-page site; no backend is needed for project filtering, galleries or the email-draft contact link.
 
+## Control Center live sync
+
+The published portfolio loads `public/portfolio-sync.js` from `index.html` using the public Control Center feed. Existing CV links are marked with `data-dashboard-cv`. Live updates reach the React hero, CV links, portfolio highlights and chatbot without replacing the original project data. When the feed is offline, the existing content and local CV remain accessible.
+
+Setup, expected JSON fields, publishing requirements and troubleshooting: [CONTROL_CENTER_SYNC.md](CONTROL_CENTER_SYNC.md).
+
 ## Portfolio assistant
 
 The floating **Ask about my work** chatbot and **Ask** actions on project cards answer common questions from the public portfolio data. They cover projects, architecture, tech stacks, work experience, internships, certifications, education, contact details and the CV.
